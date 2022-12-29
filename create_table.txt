@@ -8,3 +8,13 @@ CREATE TABLE employee (
     email VARCHAR(100) UNIQUE,
     salary INT
 );
+#
+#
+CREATE TABLE journal (
+    id 	INT PRIMARY KEY,
+    Datum DATE,
+    Erfolg VARCHAR(50) NOT NULL,
+    Sport VARCHGAR(50) NOT NULL,
+    Buch VARCHAR(50) NOT NULL,
+    Erkenntnis VARCHAR(50) NOT NULL
+);

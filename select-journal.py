@@ -19,7 +19,7 @@ for row in rows:
    print (row[0] , ":" , row[1], ":" , row[2] , ":" , row[3] , ":", row[4])
 print ("Operation done successfully")
 conn.close()
-
+#
 #
 # https://www.tutorialspoint.com/postgresql/postgresql_python.htm#
 #

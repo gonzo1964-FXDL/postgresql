@@ -1,0 +1,5 @@
+#
+/Library/PostgreSQL/15/bin/psql
+
+acccess DB MSTemp01
+/Library/PostgreSQL/15/bin/psql MSTemp01 -U mspruck

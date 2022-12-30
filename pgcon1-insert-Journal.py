@@ -8,7 +8,7 @@ print ("Opened database successfully")
 cur = conn.cursor()
 
 cur.execute("INSERT INTO journal (ID,Datum,Erfolg,Sport,Buch,Erkenntnis) \
-      VALUES (1, '28-12-2022', 'Einkaufen,Roseline Sex', 'n/a', 'n/a', 'n/a' )");
+      VALUES (3, '29-12-2022', 'Python und Visual Studio Code', '', '', '' )");
 
 conn.commit()
 print ("Records created successfully");

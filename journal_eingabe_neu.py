@@ -1,6 +1,8 @@
 import psycopg2
 from sys import argv
 #
+#   https://pynative.com/python-postgresql-insert-update-delete-table-data-to-perform-crud-operations/
+#
 print("Eingabe =====================> ", argv[1])
 print("Eingabe =====================> ", argv[2])
 print("Eingabe =====================> ", argv[3])

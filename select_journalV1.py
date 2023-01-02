@@ -32,15 +32,18 @@ def inputfile(filename):
         print(Basket[0])
         print(Basket[1])
         print(Basket[2])
+        print(Basket[3])
+        #print(Basket[4])
+        #print(basket[5])
 # Erweiterung zur abfrage eines bestimmten datums
-
 #print ("---> Abfrage Datum =", argv[1])
 if len(argv) > 1:
-    print ("---> Abfrage Datum =", argv[1])  
+    print ("--->Datumsparameter =", argv[1])  
     daTum = argv[1]
     selDatum(daTum)
-    filename = "journal.txt"
-    inputfile(filename)
+    if argv[2] == 'file':
+        filename = "journal.txt"
+        inputfile(filename)
 #    
 #   abfrage ob argv2 einen Wert hat zu, einlesen der Datei
 #

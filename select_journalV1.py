@@ -10,15 +10,15 @@ try:
 
     cur.execute("SELECT datum, erfolg, sport, buch, erkenntnis  from journal")
     rows = cur.fetchall()
-for row in rows:
-   print ("Datum = ", row[0])
-   print ("Erfolg = ", row[1])
-   print ("Sport = ", row[2])
-   print ("Buch = ", row[3])
-   print ("Erkenntnis = ", row [4], "\n")
-#
-   print (row[0] , ":" , row[1], ":" , row[2] , ":" , row[3] , ":", row[4])
-   print ("Operation done successfully")
+    for row in rows:
+        print ("Datum = ", row[0])
+        print ("Erfolg = ", row[1])
+        print ("Sport = ", row[2])
+        print ("Buch = ", row[3])
+        print ("Erkenntnis = ", row [4], "\n")
+        #
+        print (row[0] , ":" , row[1], ":" , row[2] , ":" , row[3] , ":", row[4])
+        print ("Operation done successfully")
 
 
 except (Exception, psycopg2.Error) as error:
@@ -26,9 +26,9 @@ except (Exception, psycopg2.Error) as error:
 
 finally:
     # closing database connection.
-    if connection:
-        cursor.close()
-        connection.close()
+    if conn:
+        cur.close()
+        conn.close()
         print("PostgreSQL connection is closed")
 #
 #

@@ -22,11 +22,11 @@ erk = argv[5]
 #print (erk)
 #
 try:
-    connection = psycopg2.connect(user="postgres",
-                                  password="postgres",
+    connection = psycopg2.connect(user="mspruck",
+                                  password="mspruck",
                                   host="localhost",
                                   port="5432",
-                                  database="MSTemp01")
+                                  database="ms01")
     cursor = connection.cursor()
 #
 

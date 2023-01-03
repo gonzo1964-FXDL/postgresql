@@ -1,5 +1,6 @@
 #!/usr/bin/python
 #
+#       Aufruf. python3 select_journal.py dd.mm.yyyy file
 #       erweiteruzngen:
 #       add update function
 #       update Journal set erfolg = 'Python und Postgres' where datum = '27.12.2022' ;
@@ -48,7 +49,7 @@ if len(argv) > 1:
 #   abfrage ob argv2 einen Wert hat zu, einlesen der Datei
 #
     try:
-        connection = psycopg2.connect(database = "MSTemp01", user = "postgres", password = "postgres", host = "localhost", port = "5432")
+        connection = psycopg2.connect(database = "ms01", user = "mspruck", password = "mspruck", host = "localhost", port = "5432")
         print ("Opened database successfully")
         cursor = connection.cursor()
         #print (daTum)
@@ -71,7 +72,7 @@ if len(argv) > 1:
 else:
     print ("Auslesen der ganzen Tabelle")
     try:
-        connection = psycopg2.connect(database = "MSTemp01", user = "postgres", password = "postgres", host = "localhost", port = "5432")
+        connection = psycopg2.connect(database = "ms01", user = "mspruck", password = "mspruck", host = "localhost", port = "5432")
         print ("Opened database successfully")
         cursor = connection.cursor()
 

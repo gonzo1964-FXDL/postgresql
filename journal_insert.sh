@@ -1,2 +1,2 @@
-python3 journal_eingabe_neu.py 06.01.2023 'MacBook Parallels Windows Control-M installieren' '' '' ''
-python3 journal_eingabe_neu.py 07.01.2023 'Kawasaki Interessent da, Mac/Win VCStudio mit Git, Elena tefoniert, Mühldorf Kaffee, TopGun' '' '' ''
+python3 journal_eingabe_neu.py 08.01.2023 'MacBook und Dell VritualBox mit Linux Mint, Kawasaki verkauft, Forstners essen' '' '' ''
+python3 journal_eingabe_neu.py 08.01.2023 'Versuche Control-M auf Dell/Mint zu installieren, Elena Hausbesuch, V-Box Ubuntu' '' '' ''

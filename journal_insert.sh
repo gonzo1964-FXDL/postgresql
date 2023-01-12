@@ -1,2 +1,2 @@
-python3 journal_eingabe_neu.py 08.01.2023 'MacBook und Dell VritualBox mit Linux Mint, Kawasaki verkauft, Forstners essen' '' '' ''
-python3 journal_eingabe_neu.py 08.01.2023 'Versuche Control-M auf Dell/Mint zu installieren, Elena Hausbesuch, V-Box Ubuntu' '' '' ''
+python3 journal_eingabe_neu.py 09.01.2023 'Versuch Control-M auf DELL/Mint zu insnstallieren, Elena Hausbesuch, Ubuntu installiert' 'Stütz, Katzenbuckel, seitliche Übungen, situps' '' ''
+python3 journal_eingabe_neu.py 10.01.2023 'Liux Mint, Roseline Sex' '' '' ''

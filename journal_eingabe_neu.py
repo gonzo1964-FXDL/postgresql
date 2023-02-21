@@ -30,7 +30,7 @@ try:
     cursor = connection.cursor()
 #
 
-    postgres_insert_query = """ INSERT INTO Journal (datum, erfolg, sport, buch, erkenntnis) VALUES (%s,%s,%s,%s,%s)"""
+    postgres_insert_query = """ INSERT INTO JournalNew (datum, erfolg, sport, buch, erkenntnis) VALUES (%s,%s,%s,%s,%s)"""
     record_to_insert = (dat, erf, spo, book, erk)
     cursor.execute(postgres_insert_query, record_to_insert)
 

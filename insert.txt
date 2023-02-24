@@ -1,4 +1,3 @@
-#
 
 python3 journal_eingabe_neu.py 22.12.2022 'Python programmieren, Hannover - Erding fahren, Sandra nach Erding gekommen' '' '' ''
 python3 journal_eingabe_neu.py 23.12.2022 'Python und postgres' '' '' ''
@@ -65,4 +64,3 @@ python3 journal_eingabe_neu.py '21.02.2023' 'MFT, SAP Migration' '' '' ''
 python3 journal_eingabe_neu.py '22.02.2023' 'Letzter Arbeitstag ivv' '' '' ''
 python3 journal_eingabe_neu.py 23.02.2023 'Roseline Sex, FLSTFI fahren, Dorfen Kaffee eat & meet' 'Stütz, Kettlebell' '' ''
 
-python3 journal_eingabe_neu.py 24.02.2023 'Letzter Arbeitstag ivv' '' '' ''

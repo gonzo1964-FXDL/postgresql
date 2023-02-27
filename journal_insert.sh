@@ -64,11 +64,11 @@ python3 journal_eingabe_neu.py 20.02.2023 'MFT, SAP Migration' '' '' ''
 python3 journal_eingabe_neu.py 21.02.2023 'MFT, SAP Migration' '' '' ''
 python3 journal_eingabe_neu.py 22.02.2023 'Letzter Arbeitstag ivv' '' '' ''
 python3 journal_eingabe_neu.py 23.02.2023 'Roseline Sex, FLSTFI fahren, Dorfen Kaffee eat & meet' 'Stütz, Kettlebell' '' ''
-
 python3 journal_eingabe_neu.py 24.02.2023 'FLSTFI fahren, Dateien auf MacBook' 'Kettlebell, situps mit Gewicht' '' ''
 python3 journal_eingabe_neu.py 25.02.2023 'Roseline Sex, München fahren' '' '' ''
-python3 journal_eingabe_neu.py 26.02.2023 '' '' '' ''
-python3 journal_eingabe_neu.py 27.02.2023 '' '' '' ''
+python3 journal_eingabe_neu.py 26.02.2023 '' 'einmal Stütz, Kettlebell, situps mit Gewicht' '' ''
+
+python3 journal_eingabe_neu.py 27.02.2023 '' 'Kettlebell' '' ''
 python3 journal_eingabe_neu.py 28.02.2023 '' '' '' ''
 python3 journal_eingabe_neu.py 01.03.2023 '' '' '' ''
 

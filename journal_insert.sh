@@ -1,5 +1,4 @@
 #
-
 python3 journal_eingabe_neu.py 22.12.2022 'Python programmieren, Hannover - Erding fahren, Sandra nach Erding gekommen' '' '' ''
 python3 journal_eingabe_neu.py 23.12.2022 'Python und postgres' '' '' ''
 python3 journal_eingabe_neu.py 24.12.2022 'ED - Gambach fahren' '' '' ''
@@ -67,10 +66,31 @@ python3 journal_eingabe_neu.py 23.02.2023 'Roseline Sex, FLSTFI fahren, Dorfen K
 python3 journal_eingabe_neu.py 24.02.2023 'FLSTFI fahren, Dateien auf MacBook' 'Kettlebell, situps mit Gewicht' '' ''
 python3 journal_eingabe_neu.py 25.02.2023 'Roseline Sex, München fahren' '' '' ''
 python3 journal_eingabe_neu.py 26.02.2023 '' 'einmal Stütz, Kettlebell, situps mit Gewicht' '' ''
-
 python3 journal_eingabe_neu.py 27.02.2023 '' 'Kettlebell' '' ''
-python3 journal_eingabe_neu.py 28.02.2023 '' '' '' ''
-python3 journal_eingabe_neu.py 01.03.2023 '' '' '' ''
+python3 journal_eingabe_neu.py 28.02.2023 'ED - AB - Gambach fahren' '' '' ''
+python3 journal_eingabe_neu.py 01.03.2023 'FFM mit Zug fahren' 'Kettlebell' '' ''
+python3 journal_eingabe_neu.py 02.03.2023 'John Doe Flörsheim, Grosser Feldberg gefahren, BG heisser Chat' ' ' '' ''
+python3 journal_eingabe_neu.py 03.03.2023 'Gambach-AB-ED fahren, WÜ Landstrasse' ' ' '' ''
+python3 journal_eingabe_neu.py 04.03.2023 'Roseline Sex, Dostojewski' 'Kettlebell' '' ''
+python3 journal_eingabe_neu.py 05.03.2023 'Fabi Geburtstag, Forstner Kaffee' '' '' 'Tanjas Mutter heiß, Denke an Sandra'
+python3 journal_eingabe_neu.py 06.03.2023 ' ' 'Kettlebell, situps mit Kettlebell' '' 'Denke an Sandra zu spüren, berühren'
+python3 journal_eingabe_neu.py 07.03.2023 'Roseline Sex, Geld eingezahlt MB, Schliersee Milchhäusl' 'Kettlebell+' '' 'Denke an Sandra, sie berühren, sie spüren'
+python3 journal_eingabe_neu.py 08.03.2023 'LA gefahren, Döner essen, Tchibo Tasse & Filter' '' '' 'Immer wieder an Sandra denken'
 
+python3 journal_eingabe_neu.py 09.03.2023 'Roseline Sex' 'Stütz, Bank' '' ''
 
+python3 journal_eingabe_neu.py 10.03.2023 '' '' '' ''
+python3 journal_eingabe_neu.py 11.03.2023 '' '' '' ''
+python3 journal_eingabe_neu.py 12.03.2023 '' '' '' ''
+python3 journal_eingabe_neu.py 13.03.2023 '' '' '' ''
+python3 journal_eingabe_neu.py 14.03.2023 '' '' '' ''
+python3 journal_eingabe_neu.py 15.03.2023 '' '' '' ''
+python3 journal_eingabe_neu.py 16.03.2023 '' '' '' ''
+python3 journal_eingabe_neu.py 17.03.2023 '' '' '' ''
+python3 journal_eingabe_neu.py 18.03.2023 '' '' '' ''
+python3 journal_eingabe_neu.py 19.03.2023 '' '' '' ''
 
+update journalNew set erfolg ='John Doe Flörsheim, Grosser Feldberg gefahren, BG heisser Chat' where key =68;
+
+update depot set wert ='21.423,23' where key =67;
+update depot set datum ='06.03.2023' where key =67;

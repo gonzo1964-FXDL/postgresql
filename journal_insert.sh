@@ -45,7 +45,7 @@ python3 journal_eingabe_neu.py 02.02.2023 'MFT,SAP migration, Dörr Untersuchung
 python3 journal_eingabe_neu.py 03.02.2023 'MFT, SAP migration, Dietrich Control-M Schulung' '' '' ''
 python3 journal_eingabe_neu.py 04.02.2023 'Roseline Sex, Waldkraiburg C&A, Mühldorf, Lethal Weapon 1' 'Stütz, Kettlebell' '' ''
 python3 journal_eingabe_neu.py 05.02.2023 'Lethal Weapon 2' '' '' '' 
-python3 journal_eingabe_neu.py 06.02.2023 'MFT, SAP migration, Dietrich Control-M Schulung,Lethal Weapon 3' 'Stütz, seitliche ÜbungenKettlebell' '' '' 
+python3 journal_eingabe_neu.py 06.02.2023 'MFT, SAP migration, Dietrich Control-M Schulung,Lethal Weapon 3' 'Stütz, seitliche Übungen,Kettlebell' '' '' 
 python3 journal_eingabe_neu.py 07.02.2023 'MFT, SAP migration ,Lethal Weapon 4' '' '' ''
 python3 journal_eingabe_neu.py 08.02.2023 'MFT, SAP migration, KFC Parsdorf' '' '' ''
 python3 journal_eingabe_neu.py 09.02.2023 'MFT, SAP migration' 'Stütz, Katzenbuckel, seitliche Übungen, Kettlebell' '' '' 
@@ -76,21 +76,44 @@ python3 journal_eingabe_neu.py 05.03.2023 'Fabi Geburtstag, Forstner Kaffee' '' 
 python3 journal_eingabe_neu.py 06.03.2023 ' ' 'Kettlebell, situps mit Kettlebell' '' 'Denke an Sandra zu spüren, berühren'
 python3 journal_eingabe_neu.py 07.03.2023 'Roseline Sex, Geld eingezahlt MB, Schliersee Milchhäusl' 'Kettlebell+' '' 'Denke an Sandra, sie berühren, sie spüren'
 python3 journal_eingabe_neu.py 08.03.2023 'LA gefahren, Döner essen, Tchibo Tasse & Filter' '' '' 'Immer wieder an Sandra denken'
+python3 journal_eingabe_neu.py 09.03.2023 'Roseline Sex' 'Stütz, Bank' '' 'Sandra im Kopf'
+python3 journal_eingabe_neu.py 10.03.2023 'Mühldorf Kaffee trinken' '' '' 'wie es wäre Sandra zu spüren'
+python3 journal_eingabe_neu.py 11.03.2023 '' 'Bank, Stütz, Kettlebell-' '' 'Denke daran Sandra spüren und berühren, Sex mit Birgit'
+python3 journal_eingabe_neu.py 12.03.2023 'Freising Stoffmarkt' '' '' 'Denke daran Sandra spüren und berühren, Sex mit Birgit'
+python3 journal_eingabe_neu.py 13.03.2023 'Roseline Sex, FLHTKL Vilsbiburg Mareis' 'Bank, Stütz, seitliche Übungen, Kettlebell' '' 'Denke an Sandra spüren & berühren, Sex mit Birgit'
+python3 journal_eingabe_neu.py 14.03.2023 'Mammut Schuhe bestellt, Roseline Zahnarzt' '' '' 'Denke daran Sandra spüren und berühren, denke an Sex mit Birgit'
+python3 journal_eingabe_neu.py 15.03.2023 'Roseline Dr. Bloch, München fahren, Anhänger abgeholt' '' '' 'denke an Sex mit Sandra, an Sex mit Birgit'
+python3 journal_eingabe_neu.py 16.03.2023 'Roseline Sex, FLHTKL fahren' 'Bank, Stütz, seitliche Übungen, Kettlebell' ''  'Denke an Sex mit Sandra, Sex mit Birgit'
+python3 journal_eingabe_neu.py 17.03.2023 'FLSTFI fahren, VRSCDX fahren' 'Bank, Stütz, seitliche Übungen' '' 'Denke an Sex mit Sandra, Sex mit Birgit'
+python3 journal_eingabe_neu.py 18.03.2023 'TÜV Termin ausgemacht, FLHTKL fahren Traunreut' '' '' 'Denke an Sex mit Sandra, Sex mit Birgit'
+python3 journal_eingabe_neu.py 19.03.2023 'Roseline Sex, Kircheim Eis essen, IHlE Erding' 'Stütz, situp' '' 'Denke an Sex mit Sandra, Sex mit Birgit'
 
-python3 journal_eingabe_neu.py 09.03.2023 'Roseline Sex' 'Stütz, Bank' '' ''
+python3 journal_eingabe_neu.py 20.03.2023 '' '' '' ''
+python3 journal_eingabe_neu.py 21.03.2023 '' '' '' ''
+python3 journal_eingabe_neu.py 22.03.2023 '' '' '' ''
+python3 journal_eingabe_neu.py 23.03.2023 '' '' '' ''
+python3 journal_eingabe_neu.py 24.03.2023 '' '' '' ''
+python3 journal_eingabe_neu.py 25.03.2023 '' '' '' ''
+python3 journal_eingabe_neu.py 26.03.2023 '' '' '' ''
+python3 journal_eingabe_neu.py 27.03.2023 '' '' '' ''
+python3 journal_eingabe_neu.py 28.03.2023 '' '' '' ''
+python3 journal_eingabe_neu.py 29.03.2023 '' '' '' ''
+python3 journal_eingabe_neu.py 30.03.2023 '' '' '' ''
+python3 journal_eingabe_neu.py 31.03.2023 '' '' '' ''
 
-python3 journal_eingabe_neu.py 10.03.2023 '' '' '' ''
-python3 journal_eingabe_neu.py 11.03.2023 '' '' '' ''
-python3 journal_eingabe_neu.py 12.03.2023 '' '' '' ''
-python3 journal_eingabe_neu.py 13.03.2023 '' '' '' ''
-python3 journal_eingabe_neu.py 14.03.2023 '' '' '' ''
-python3 journal_eingabe_neu.py 15.03.2023 '' '' '' ''
-python3 journal_eingabe_neu.py 16.03.2023 '' '' '' ''
-python3 journal_eingabe_neu.py 17.03.2023 '' '' '' ''
-python3 journal_eingabe_neu.py 18.03.2023 '' '' '' ''
-python3 journal_eingabe_neu.py 19.03.2023 '' '' '' ''
+python3 journal_eingabe_neu.py 01.04.2023 '' '' '' ''
+python3 journal_eingabe_neu.py 02.04.2023 '' '' '' ''
+python3 journal_eingabe_neu.py 03.04.2023 '' '' '' ''
+python3 journal_eingabe_neu.py 04.04.2023 '' '' '' ''
 
-update journalNew set erfolg ='John Doe Flörsheim, Grosser Feldberg gefahren, BG heisser Chat' where key =68;
+alter table journalNew alter column erkenntnis type varchar (100);
+
+update journalNew set erfolg ='Roseline Sex, spazieren Indorf' where key =75 ;
+update journalNew set erkenntnis ='Daran denken Sandra spüren und berühren' where key =77 ;
 
 update depot set wert ='21.423,23' where key =67;
 update depot set datum ='06.03.2023' where key =67;
+#
+update depot set wert ='20.951,82' where key =67;
+update depot set datum ='11.03.2023' where key =67;
+

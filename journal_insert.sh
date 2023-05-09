@@ -87,33 +87,89 @@ python3 journal_eingabe_neu.py 16.03.2023 'Roseline Sex, FLHTKL fahren' 'Bank, S
 python3 journal_eingabe_neu.py 17.03.2023 'FLSTFI fahren, VRSCDX fahren' 'Bank, Stütz, seitliche Übungen' '' 'Denke an Sex mit Sandra, Sex mit Birgit'
 python3 journal_eingabe_neu.py 18.03.2023 'TÜV Termin ausgemacht, FLHTKL fahren Traunreut' '' '' 'Denke an Sex mit Sandra, Sex mit Birgit'
 python3 journal_eingabe_neu.py 19.03.2023 'Roseline Sex, Kircheim Eis essen, IHlE Erding' 'Stütz, situp' '' 'Denke an Sex mit Sandra, Sex mit Birgit'
+python3 journal_eingabe_neu.py 20.03.2023 'ED - Darmstadt fahren' '' '' ''
+python3 journal_eingabe_neu.py 21.03.2023 'Darmstadt - AB fahren, Louis einkaufen, AB - ED fahren' '' '' 'Denke immer wieder an Sex mit Sandra, Sex mit Birgit'
+python3 journal_eingabe_neu.py 22.03.2023 'Roseline Sex, FLHTKL und FLSTFI HU' '' '' 'Denke immer wieder an Sex mit Sandra, Sex mit Birgit'
+python3 journal_eingabe_neu.py 23.03.2023 'FLHTKL fahren Maxlrain' 'Bank, Stütz, seitliche Übungen, situps' '' 'denke an CB; Sandra spüren; Birgit spüren'
+python3 journal_eingabe_neu.py 24.03.2023 'Whatsapp Sandra' 'Bank, Stütz, seitliche Übungen' '' ''
+python3 journal_eingabe_neu.py 25.03.2023 'Roseline Sex, ED Foot Markt' '' '' ''
+python3 journal_eingabe_neu.py 26.03.2023 '' 'Bank' '' ''
+python3 journal_eingabe_neu.py 27.03.2023 'Kino Film der vermessene Mensch' 'Bank, Stütz, situps' '' ''
+python3 journal_eingabe_neu.py 28.03.2023 'FLSTFI, VRSCDV Had-Eck gebracht, Mareis Kaffee, Kuchen Vilsbiburg' '' '' ''
+python3 journal_eingabe_neu.py 29.03.2023 'Roseline Sex, Pfannkuchen' 'Bank, Stütz, Sodbrennen' '' 'Denke an Sex mit Sandra'
+python3 journal_eingabe_neu.py 30.03.2023 'Zahnarzt, Fossil Uhren bestellt' 'Bank, Stütz, seitliche Übungen' '' ''
+python3 journal_eingabe_neu.py 31.03.2023 'ED nach AB und Köln fahren' '' '' ''
+python3 journal_eingabe_neu.py 01.04.2023 '' 'Bank, Stütz, seitliche Übungen' '' ''
+python3 journal_eingabe_neu.py 02.04.2023 '' 'Stütz' '' ''
+python3 journal_eingabe_neu.py 03.04.2023 'REWE Köln Erster Arbeitstag' '' '' ''
+python3 journal_eingabe_neu.py 04.04.2023 'REWE Köln' '' '' ''
+python3 journal_eingabe_neu.py 05.04.2023 'REWE Köln' '' '' ''
+python3 journal_eingabe_neu.py 06.04.2023 'REWE Köln' '' '' ''
+python3 journal_eingabe_neu.py 07.04.2023 '' 'Stütz 150St' '' ''
+python3 journal_eingabe_neu.py 08.04.2023 'Köln – ED fahren, Fossil Uhren Paket' '' '' ''
+python3 journal_eingabe_neu.py 09.04.2023 'Roseline Sex' '' '' ''
+python3 journal_eingabe_neu.py 10.04.2023 'FLHTKL fahren Wasserburg' 'Bank, Stütz, seitliche Übungen' '' ''
+python3 journal_eingabe_neu.py 11.04.2023 'Fossil Uhr getragen, Roseline Fossil Uhr bestellt, RAV Pötzinger' 'Bank, Stütz' '' ''
+python3 journal_eingabe_neu.py 12.04.2023 'RAV Pötzinger abgeholt' '' '' ''
+python3 journal_eingabe_neu.py 13.04.2023 'Hilux Angebot' 'Stütz' '' ''
+python3 journal_eingabe_neu.py 14.04.2023 'Dubliner essen' '' '' ''
+python3 journal_eingabe_neu.py 15.04.2023 'Roseline Sex' 'Bank, Stütz, seitliche Übungen' '' ''
+python3 journal_eingabe_neu.py 16.04.2023 'Kino John Wick 5' 'Bank, Stütz, seitliche Übungen 3*50, situps' '' ''
+python3 journal_eingabe_neu.py 17.04.2023 'FLHTKL fahren' 'Bank, Stütz, seitliche Übungen 3*50, situps' '' ''
+python3 journal_eingabe_neu.py 18.04.2023 'Roseline AB, Sandra telefoniert, Film Apocalypse Now' '' '' ''
+python3 journal_eingabe_neu.py 19.04.2023 'Film Apocalypse Now, Solar Powerbank' '' '' ''
+python3 journal_eingabe_neu.py 20.04.2023 'RestAPI arbeiten' 'Bank, Stütz, seitliche Übungen 3*50' '' ''
+python3 journal_eingabe_neu.py 21.04.2023 'RestAPI arbeiten' '' '' ''
+python3 journal_eingabe_neu.py 22.04.2023 'Roseline Sex, FLHTKL Straubing fahren' 'Bank, Stütz, seitliche Übungen 3*50' '' 'Denke an Sex mit Sandra'
+python3 journal_eingabe_neu.py 23.04.2023 '' 'Bank, Stütz 3*50,  seitliche Übungen 2*50' '' ''
+python3 journal_eingabe_neu.py 24.04.2023 'Udemy Kurs Linux Bootcamp' '' '' ''
+python3 journal_eingabe_neu.py 25.04.2023 'Satzinger & Alice telefoniert, Udemy Kurs Linux Bootcamp' 'Bank 150' '' ''
+python3 journal_eingabe_neu.py 26.04.2023 'Udemy Kurs Linux Bootcamp, Had-Eck' '' '' 'Sandra Chat'
+python3 journal_eingabe_neu.py 27.04.2023 'Udemy Linux Bootcamp, Administration of Red Hat Linux 8,VRSCDX fahren' 'Bank, Stütz 3*50, situps' '' ''
+python3 journal_eingabe_neu.py 28.04.2023 'Udemy Linux Bootcamp, Administration of Red Hat Linux 8, Roseline Babbel App und Udemy A1 Kurs' '' '' ''
+python3 journal_eingabe_neu.py 29.04.2023 'Roseline Sex, Udemy Administration of Red Hat Linux 8,FLHTKL Frontenhausen, Gangkofen,Mühldorf' 'Bank, Stütz 2*50' '' 'Denke an Sex mit Sandra'
+python3 journal_eingabe_neu.py 30.04.2023 'VRSCDX fahren mit GoPro' 'Bank, Stütz 1*50' '' ''
+python3 journal_eingabe_neu.py 01.05.2023 'Sauerteig Brot backen' 'Bank, Stütz 3+50' '' ''
+python3 journal_eingabe_neu.py 02.05.2023 'Udemy Administration of Red Hat Linux, Roseline AB, Linux Bootcamp' '' '' ''
 
-python3 journal_eingabe_neu.py 20.03.2023 '' '' '' ''
-python3 journal_eingabe_neu.py 21.03.2023 '' '' '' ''
-python3 journal_eingabe_neu.py 22.03.2023 '' '' '' ''
-python3 journal_eingabe_neu.py 23.03.2023 '' '' '' ''
-python3 journal_eingabe_neu.py 24.03.2023 '' '' '' ''
-python3 journal_eingabe_neu.py 25.03.2023 '' '' '' ''
-python3 journal_eingabe_neu.py 26.03.2023 '' '' '' ''
-python3 journal_eingabe_neu.py 27.03.2023 '' '' '' ''
-python3 journal_eingabe_neu.py 28.03.2023 '' '' '' ''
-python3 journal_eingabe_neu.py 29.03.2023 '' '' '' ''
-python3 journal_eingabe_neu.py 30.03.2023 '' '' '' ''
-python3 journal_eingabe_neu.py 31.03.2023 '' '' '' ''
+python3 journal_eingabe_neu.py 03.05.2023 'Linux Bootcamp, BMC workshop, VRSCDX fahren' '' '' ''
 
-python3 journal_eingabe_neu.py 01.04.2023 '' '' '' ''
-python3 journal_eingabe_neu.py 02.04.2023 '' '' '' ''
-python3 journal_eingabe_neu.py 03.04.2023 '' '' '' ''
-python3 journal_eingabe_neu.py 04.04.2023 '' '' '' ''
+python3 journal_eingabe_neu.py 04.05.2023 'BMC workshop, FLSTFI fahren und GoPro' 'Bank, Stütz 3*50' '' ''
+
+python3 journal_eingabe_neu.py 05.05.2023 'FLSTFI fahren und GoPro, iPhone Rewe, Udemy Administration of Red Hat Linux, Linux Bootcamp' 'Bank 150' '' ''
+
+python3 journal_eingabe_neu.py 06.05.2023 'VRSCDX fahren mit GoPro' '' '' ''
+
+python3 journal_eingabe_neu.py 07.05.2023 'VRSCDX fahren mit GoPro - Rosenheim' 'Bank, Stütz 3*50' '' ''
+
+python3 journal_eingabe_neu.py 08.05.2023 'Drohne DJI Air 2s geliefert, Probeflug OK, macht Spass' '' '' ''
+
+python3 journal_eingabe_neu.py 09.05.2023 '' '' '' ''
+python3 journal_eingabe_neu.py 10.05.2023 '' '' '' ''
+python3 journal_eingabe_neu.py 11.05.2023 '' '' '' ''
+python3 journal_eingabe_neu.py 12.05.2023 '' '' '' ''
+python3 journal_eingabe_neu.py 13.05.2023 '' '' '' ''
+python3 journal_eingabe_neu.py 14.05.2023 '' '' '' ''
+python3 journal_eingabe_neu.py 15.05.2023 '' '' '' ''
+python3 journal_eingabe_neu.py 16.05.2023 '' '' '' ''
+python3 journal_eingabe_neu.py 17.05.2023 '' '' '' ''
+python3 journal_eingabe_neu.py 18.05.2023 '' '' '' ''
+python3 journal_eingabe_neu.py 19.05.2023 '' '' '' ''
+python3 journal_eingabe_neu.py 20.05.2023 '' '' '' ''
+python3 journal_eingabe_neu.py 21.05.2023 '' '' '' ''
+
 
 alter table journalNew alter column erkenntnis type varchar (100);
 
-update journalNew set erfolg ='Roseline Sex, spazieren Indorf' where key =75 ;
-update journalNew set erkenntnis ='Daran denken Sandra spüren und berühren' where key =77 ;
+update journalNew set erfolg ='Roseline AB, Sandra telefoniert, Film Apocalypse Now' where key =116 ;
+update journalNew set erkenntnis ='Denke immer wieder an Sex mit Sandra, Sex mit Birgit' where key =92 ;
 
 update depot set wert ='21.423,23' where key =67;
 update depot set datum ='06.03.2023' where key =67;
 #
 update depot set wert ='20.951,82' where key =67;
 update depot set datum ='11.03.2023' where key =67;
+
+
+
 

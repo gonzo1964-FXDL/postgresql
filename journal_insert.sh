@@ -153,7 +153,7 @@ python3 journal_eingabe_neu.py 21.05.2023 'FLHTKL fahren mit Pro Thenner Weiher'
 python3 journal_eingabe_neu.py 22.05.2023 'Balkon Sichtschutz, Udemy: Version Control with Git, spazieren Indorf' '' '' ''
 python3 journal_eingabe_neu.py 23.05.2023 'telefoniert mit Ben Stokes, spazieren Indorf' '' '' ''
 
-python3 journal_eingabe_neu.py 24.05.2023 '' '' '' ''
+python3 journal_eingabe_neu.py 24.05.2023 'Udemy Version Control with Git, GCP Fundamentals' 'Bank, Stütz' '' ''
 
 python3 journal_eingabe_neu.py 25.05.2023 '' '' '' ''
 python3 journal_eingabe_neu.py 26.05.2023 '' '' '' ''

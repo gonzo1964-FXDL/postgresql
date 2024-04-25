@@ -20,7 +20,8 @@ erk = argv[5]
 #print (spo)
 #print (book)
 #print (erk)
-#
+#.
+# for journal tables use user journal to connect to DB
 try:
     connection = psycopg2.connect(user="mspruck",
                                   password="mspruck",

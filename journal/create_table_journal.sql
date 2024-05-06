@@ -1,0 +1,6 @@
+CREATE TABLE Journal (Datum VARCHAR(10) NOT NULL,
+    Erfolg VARCHAR(100) NOT NULL,
+    Sport VARCHAR(80) NOT NULL,
+    Buch VARCHAR(50) NOT NULL,
+    Erkenntnis VARCHAR(50) NOT NULL
+); 

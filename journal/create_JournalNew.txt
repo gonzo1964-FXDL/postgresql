@@ -1,0 +1,10 @@
+#
+CREATE TABLE public.journalNew (
+    key serial primary key,
+    datum character varying(10) NOT NULL,
+    erfolg character varying(100) NOT NULL,
+    sport character varying(80) NOT NULL,
+    buch character varying(50) NOT NULL,
+    erkenntnis character varying(50) NOT NULL
+);
+

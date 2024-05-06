@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
-
+#
+#   start : bash bt.sh "schreiben" "24. April 2024" "08:08" "159" "90" "***"
+#
 if [[ ${1} ==  "lesen" ]]
 then
     echo "lesen"

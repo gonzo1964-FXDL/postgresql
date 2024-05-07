@@ -7,19 +7,17 @@ print ("Opened database successfully")
 
 cur = conn.cursor()
 
-cur.execute("SELECT datum, erfolg, sport, buch, erkenntnis  from journal")
+cur.execute("SELECT id, name, address, salary  from COMPANY")
 rows = cur.fetchall()
 for row in rows:
-   print ("Datum = ", row[0])
-   print ("Erfolg = ", row[1])
-   print ("Sport = ", row[2])
-   print ("Buch = ", row[3])
-   print ("Erkenntnis = ", row [4], "\n")
-#
-   print (row[0] , ":" , row[1], ":" , row[2] , ":" , row[3] , ":", row[4])
+   print ("ID = ", row[0])
+   print ("NAME = ", row[1])
+   print ("ADDRESS = ", row[2])
+   print ("SALARY = ", row[3], "\n")
+
 print ("Operation done successfully")
 conn.close()
-#
+
 #
 # https://www.tutorialspoint.com/postgresql/postgresql_python.htm#
 #

@@ -1,1 +1,0 @@
-/Users/michaelspruck/DB/postgres/con.sh

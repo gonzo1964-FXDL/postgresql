@@ -1,3 +1,0 @@
-#How to start the process
-
-bash bt.sh "schreiben" "25. April 2024" "17:08" "148" "84" " "

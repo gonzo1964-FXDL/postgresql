@@ -1,3 +1,0 @@
-#
-https://www.luis.uni-hannover.de/fileadmin/kurse/material/SQL-Einfuehrung/SQL_28_Database_User.pdf
-

@@ -1,3 +1,16 @@
+#
+#   python3 myclass1.py insert dkv "07.01.2024" "Huber" "11.11.2023" " " "Huber" "Reinigung" "111,11" " " " b"
+#   python3 myclass1.py insert reisekosten "08. Mai 2024" "Hotel" "von nach da" "999" "99,99"
+#   python3 myclass1.py insert blutdruck "08.Mai 2024" "11:11" 180 90 "kommentar"
+#   python3 myclass1.py insert journal '07.05.2024' 'Glas Zitronensaft, Python Programm, Clarksons Farm' '' 'Buch' ''
+#
+#   python3 myclass1.py read reisekosten
+#   python3 myclass1.py read dkv
+#   python3 myclass1.py read blutdruck
+#   python3 myclass1.py read journalnew
+#   python3 myclass1.py read depot
+#   python3 myclass1.py read km
+#
 import psycopg2
 import time
 import datetime
@@ -12,8 +25,6 @@ cLeaNer = ""
 vieWer = ""
 ziPPer = ""
 pObject = ""
-
-fileObject ="/ctmpg/.PG/"
 
 today = datetime.date.today()
 Today = today.strftime("%y%m%d")
@@ -37,7 +48,6 @@ ioaLogDelDate = minus_2.strftime("%Y%m%d")
 programmUser = os.environ['USER']
 
 database_Table=argv[2]
-
 #
 print ('Today    :', Today)
 print ('Today    :', toDay)
@@ -60,13 +70,11 @@ class DataBase(object):
             self.database_Table = database_Table
             self.dump_Output="/Users/michaelspruck/Programmierung/Git/postgresql/newgen/"
             self.pswPath = "/Users/michaelspruck/Programmierung/Git/postgresql/newgen"
-            fileObject ="/Users/michaelspruck/Programmierung/Git/postgresql/newgen"
             self.ctmpg_SU = "postgres"
-#
 #
         def read_All_PG(self):
 
-            self.dump_Output_PostgreSQL = ""+ self.dump_Output + "/"+ self.database_Type + "/" + self.database_Host + "/" + Today + ""            
+            #self.dump_Output_PostgreSQL = ""+ self.dump_Output + "/"+ self.database_Type + "/" + self.database_Host + "/" + Today + ""            
             
             print ('DB_USER : ' , self.database_User)
             print ('DB_NAME : ' , self.database_Name)
@@ -74,9 +82,9 @@ class DataBase(object):
             print ('DB_TYPE : ' , self.database_Type)
             print ('DB_HOST : ' , self.database_Host) 
             print ('DB_Table : ' , self.database_Table)
-            print ('DB_OUT : ' , self.dump_Output_PostgreSQL)
+            #print ('DB_OUT : ' , self.dump_Output_PostgreSQL)
  
-            print ('get password for ' + self.database_User + " and from file " + fileObject + "/"+ self.database_User +"" )
+            print ('get password for ' + self.database_User + " and from file " + self.pswPath + "/"+ self.database_User +"" )
             self.pswPath = ""+ self.pswPath +"/"+ self.database_Name + ""
             print (self.pswPath) 
 
@@ -87,22 +95,180 @@ class DataBase(object):
                 os.putenv('PGPASSWORD', line.rstrip())    
             print (pObject)
             #
-            # connect to db
-            selDate = "psql -U " + self.database_User + " -p " + self.database_Port + " -h " + self.database_Host + " -d " + self.database_Name +" -c \"select * from "+ database_Table +" ; \""
-            process = subprocess.Popen(selDate,stdout=subprocess.PIPE,shell=True)
-            os.system(selDate)
+            if argv[1] == "insert":
+                print ('insert')
+
+                if argv[2] == "dkv":
+                    wertRechnungDatum=argv[3]
+                    wertRechnungSteller=argv[4]
+                    wertLeistungDatum=argv[5]
+                    wertRezeptDatum=argv[6]
+                    wertLeistungGeber=argv[7]
+                    wertLeistung=argv[8]
+                    wertBetrag=argv[9]
+                    wertdkvAbrechnungDatum=argv[10]
+                    wertdkvAbrechnungBetrag=argv[11]
+                    
+                    try:
+                        connection = psycopg2.connect(user=self.database_User,
+                                                    password=pObject,
+                                                    host=self.database_Host,
+                                                    port=self.database_Port,
+                                                    database=self.database_Name)
+                        cursor = connection.cursor()
+    
+                        print ('Insert in Table : ' , self.database_Table )
+                        insert_query = """ INSERT INTO dkv (rechnungs_datum, rechnungs_steller, leistungs_datum, rezept_datum, leistungs_geber, leistung, betrag, dkv_abrechnungs_datum, dkv_abrechnungs_betrag) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s)"""
+                        record_to_insert = (wertRechnungDatum, wertRechnungSteller, wertLeistungDatum, wertRezeptDatum, wertLeistungGeber, wertLeistung, wertBetrag, wertdkvAbrechnungBetrag, wertdkvAbrechnungDatum)
+                        print(record_to_insert)
+                        cursor.execute(insert_query, record_to_insert)
+
+                        connection.commit()
+                        count = cursor.rowcount
+                        print(count, "Record inserted successfully into >" + self.database_Table)
+
+                    except:
+                        print("Failed to insert record into >" + self.database_Table)
+
+                    finally:
+                        # closing database connection.
+                        if connection:
+                            cursor.close()
+                            connection.close()
+                            print("DB connection is closed")
+
+                if argv[2] == "reisekosten":
+                    rk_Datum=argv[3]
+                    rk_Hotel=argv[4]
+                    rk_Strecke=argv[5]
+                    rk_km=argv[6]
+                    rk_Kosten=argv[7]
+                    
+                    try:
+                        connection = psycopg2.connect(user=self.database_User,
+                                                    password=pObject,
+                                                    host=self.database_Host,
+                                                    port=self.database_Port,
+                                                    database=self.database_Name)
+                        cursor = connection.cursor()
+    
+                        print ('Insert in Table : ' , self.database_Table )
+                        insert_query = """ INSERT INTO reisekosten (datum, hotel, strecke, km, kosten) VALUES (%s,%s,%s,%s,%s)"""
+                        record_to_insert = (rk_Datum, rk_Hotel, rk_Strecke, rk_km, rk_Kosten)
+                        print(record_to_insert)
+                        cursor.execute(insert_query, record_to_insert)
+
+                        connection.commit()
+                        count = cursor.rowcount
+                        print(count, "Record inserted successfully into >" + self.database_Table)
+
+                    except (Exception, psycopg2.Error) as error:
+                        print("Failed to insert record into >" + self.database_Table)
+                        print("Failed to insert record into  table", error)
+
+                    finally:
+                        # closing database connection.
+                        if connection:
+                            cursor.close()
+                            connection.close()
+                            print("DB connection is closed")
+
+                if argv[2] == "blutdruck":
+                    bt_Datum=argv[3]
+                    bt_Zeit=argv[4]
+                    bt_Sys=argv[5]
+                    bt_Dia=argv[6]
+                    bt_Kommentar=argv[7]
+                    
+                    try:
+                        connection = psycopg2.connect(user=self.database_User,
+                                                    password=pObject,
+                                                    host=self.database_Host,
+                                                    port=self.database_Port,
+                                                    database=self.database_Name)
+                        cursor = connection.cursor()
+    
+                        print ('Insert in Table : ' , self.database_Table )
+                        insert_query = """ INSERT INTO blutdruck (datum, zeit, sys, dia, kommentar) VALUES (%s,%s,%s,%s,%s)"""
+                        record_to_insert = (bt_Datum, bt_Zeit, bt_Sys, bt_Dia, bt_Kommentar)
+                        print(record_to_insert)
+                        cursor.execute(insert_query, record_to_insert)
+
+                        connection.commit()
+                        count = cursor.rowcount
+                        print(count, "Record inserted successfully into >" + self.database_Table)
+
+                    except (Exception, psycopg2.Error) as error:
+                        print("Failed to insert record into >" + self.database_Table)
+                        print("Failed to insert record into  table", error)
+
+                    finally:
+                        # closing database connection.
+                        if connection:
+                            cursor.close()
+                            connection.close()
+                            print("DB connection is closed")
+
+                if argv[2] == "journal":
+                    j_Datum=argv[3]
+                    j_Erfolg=argv[4]
+                    j_Sport=argv[5]
+                    j_Buch=argv[6]
+                    J_Erkenntnis=argv[7]
+                    
+                    try:
+                        connection = psycopg2.connect(user=self.database_User,
+                                                    password=pObject,
+                                                    host=self.database_Host,
+                                                    port=self.database_Port,
+                                                    database=self.database_Name)
+                        cursor = connection.cursor()
+    
+                        print ('Insert in Table : ' , self.database_Table )
+                        insert_query = """ INSERT INTO journalnew (datum, erfolg, sport, buch, erkenntnis) VALUES (%s,%s,%s,%s,%s)"""
+                        record_to_insert = (j_Datum, j_Erfolg, j_Sport, j_Buch, J_Erkenntnis)
+                        print(record_to_insert)
+                        cursor.execute(insert_query, record_to_insert)
+
+                        connection.commit()
+                        count = cursor.rowcount
+                        print(count, "Record inserted successfully into >" + self.database_Table)
+
+                    except (Exception, psycopg2.Error) as error:
+                        print("Failed to insert record into >" + self.database_Table)
+                        print("Failed to insert record into  table", error)
+
+                    finally:
+                        # closing database connection.
+                        if connection:
+                            cursor.close()
+                            connection.close()
+                            print("DB connection is closed")
+            
+            
+            if argv[1] == "read":
+                print ('read')
+                selDate = "psql -U " + self.database_User + " -p " + self.database_Port + " -h " + self.database_Host + " -d " + self.database_Name +" -c \"select * from "+ database_Table +" ; \""
+                process = subprocess.Popen(selDate,stdout=subprocess.PIPE,shell=True)
+                os.system(selDate)
 #
 #
-
-database_Host="localhost"        
-database_User="mspruck"        
-database_Port="5432"        
-database_Type="PostgreSQL"        
-database_Name="ms01" 
-#database_Table=argv[2]
-objekt_PG = DataBase(database_User, database_Name, database_Port, database_Type, database_Host, database_Table)
-objekt_PG.read_All_PG()
+if argv[1] == "read":
+    database_Host="localhost"        
+    database_User="mspruck"        
+    database_Port="5432"        
+    database_Type="PostgreSQL"        
+    database_Name="ms01"
+    # Aufruf read class
+    objekt_PG = DataBase(database_User, database_Name, database_Port, database_Type, database_Host, database_Table)
+    objekt_PG.read_All_PG()
 #
-
-
-
+if argv[1] == "insert":
+    database_Host="localhost"        
+    database_User="mspruck"        
+    database_Port="5432"        
+    database_Type="PostgreSQL"        
+    database_Name="ms01" 
+    # aufruf der insert class
+    objekt_PG = DataBase(database_User, database_Name, database_Port, database_Type, database_Host, database_Table)
+    objekt_PG.read_All_PG()

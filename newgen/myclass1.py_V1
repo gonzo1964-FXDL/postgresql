@@ -1,7 +1,7 @@
 #
 #   python3 myclass1.py insert dkv "07.01.2024" "Huber" "11.11.2023" " " "Huber" "Reinigung" "111,11" " " " b"
 #   python3 myclass1.py insert reisekosten "08. Mai 2024" "Hotel" "von nach da" "999" "99,99"
-#   python3 myclass1.py insert blutdruck "09.Mai 2024" "11:33" 138 78 Ergometer
+#   python3 myclass1.py insert blutdruck "08.Mai 2024" "11:11" 180 90 "kommentar"
 #   python3 myclass1.py insert journal '07.05.2024' 'Glas Zitronensaft, Python Programm, Clarksons Farm' '' 'Buch' ''
 #
 #   python3 myclass1.py read reisekosten
@@ -10,8 +10,6 @@
 #   python3 myclass1.py read journalnew
 #   python3 myclass1.py read depot
 #   python3 myclass1.py read km
-#
-#   testen neues read python3 myclass1.py rd ""
 #
 import psycopg2
 import time
@@ -98,6 +96,7 @@ class DataBase(object):
             print (pObject)
             #
             if argv[1] == "insert":
+                print ('insert')
 
                 if argv[2] == "dkv":
                     wertRechnungDatum=argv[3]
@@ -253,54 +252,6 @@ class DataBase(object):
                 process = subprocess.Popen(selDate,stdout=subprocess.PIPE,shell=True)
                 os.system(selDate)
 #
-#           new read definition
-
-            if argv[1] == "rd":
-                try:
-                    connection = psycopg2.connect(user=self.database_User,
-                                                    password=pObject,
-                                                    host=self.database_Host,
-                                                    port=self.database_Port,
-                                                    database=self.database_Name)
-                    cursor = connection.cursor()
-
-                    cursor.execute("SELECT * from " + self.database_Table)
-                    row = cursor.fetchone()
-
-#       prüfen der rows anhand der Tabellen columns
-
-                    while row:
-                           #print (str(row[0]) + " " + str(row[1]))
-                           row = cursor.fetchone()
-                           print(row)
-
-                    cur = connection.cursor()
-                    cur.execute("SELECT * from " + self.database_Table)
-                    rows = cur.fetchall()
-                    for row in rows:
-                        print (row[1] , row[2] , row[3])
-                        #print ("ID = ", row[0])
-                        #print ("Datum = ", row[1])
-                        #print ("ADDRESS = ", row[2])
-                        #print ("SALARY = ", row[3], "\n")            
-
-
-                except (Exception, psycopg2.Error) as error:
-                    print("Failed to read from >" + self.database_Table)
-                    print("Failed to read from table", error)
-
-                finally:
-                        # closing database connection.
-                    if connection:
-                       cursor.close()
-                       connection.close()
-                       print("DB connection is closed")
-            
-
-
-
-
-
 #
 if argv[1] == "read":
     database_Host="localhost"        
@@ -319,15 +270,5 @@ if argv[1] == "insert":
     database_Type="PostgreSQL"        
     database_Name="ms01" 
     # aufruf der insert class
-    objekt_PG = DataBase(database_User, database_Name, database_Port, database_Type, database_Host, database_Table)
-    objekt_PG.read_All_PG()
-#
-if argv[1] == "rd":
-    database_Host="localhost"        
-    database_User="mspruck"        
-    database_Port="5432"        
-    database_Type="PostgreSQL"        
-    database_Name="ms01"
-    # Aufruf read class
     objekt_PG = DataBase(database_User, database_Name, database_Port, database_Type, database_Host, database_Table)
     objekt_PG.read_All_PG()

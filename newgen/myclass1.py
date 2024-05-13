@@ -278,7 +278,7 @@ class DataBase(object):
                     cur.execute("SELECT * from " + self.database_Table)
                     rows = cur.fetchall()
                     for row in rows:
-                        print (row[1] , row[2] , row[3])
+                        print (row[0] , row[1] , row[2] , row[3])
                         #print ("ID = ", row[0])
                         #print ("Datum = ", row[1])
                         #print ("ADDRESS = ", row[2])

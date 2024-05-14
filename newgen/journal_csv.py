@@ -7,9 +7,9 @@ database_Port="5432"
 database_Type="PostgreSQL"        
 database_Name="ms01" 
 database_psw="mspruck"
-database_Table="journal_klon"
+database_Table="journal"
 
-with open('journal_neu.csv', newline='') as csvfile:
+with open('journal_gesamt.csv', newline='') as csvfile:
     csvreader = csv.reader(csvfile, delimiter=';')
 
     connection = psycopg2.connect(user=database_User,
@@ -43,7 +43,7 @@ with open('journal_neu.csv', newline='') as csvfile:
                         cursor = connection.cursor()
 
                         print ('Insert in Table : ' , database_Table )
-                        insert_query = """ INSERT INTO journal_klon (datum, erfolg, sport, buch, erkenntnis) VALUES (%s,%s,%s,%s,%s)"""
+                        insert_query = """ INSERT INTO journal (datum, erfolg, sport, buch, erkenntnis) VALUES (%s,%s,%s,%s,%s)"""
                         record_to_insert = (j_Datum, j_Erfolg, j_Sport, j_Buch, j_Erkenntnis)
                         print(record_to_insert)
                         cursor.execute(insert_query, record_to_insert)

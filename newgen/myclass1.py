@@ -119,7 +119,7 @@ class DataBase(object):
                         cursor = connection.cursor()
     
                         print ('Insert in Table : ' , self.database_Table )
-                        insert_query = """ INSERT INTO dkv (rechnungs_datum, rechnungs_steller, leistungs_datum, rezept_datum, leistungs_geber, leistung, betrag, dkv_abrechnungs_datum, dkv_abrechnungs_betrag) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s)"""
+                        insert_query = "INSERT INTO "+ self.database_Table +" (rechnungs_datum, rechnungs_steller, leistungs_datum, rezept_datum, leistungs_geber, leistung, betrag, dkv_abrechnungs_datum, dkv_abrechnungs_betrag) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s) "
                         record_to_insert = (wertRechnungDatum, wertRechnungSteller, wertLeistungDatum, wertRezeptDatum, wertLeistungGeber, wertLeistung, wertBetrag, wertdkvAbrechnungBetrag, wertdkvAbrechnungDatum)
                         print(record_to_insert)
                         cursor.execute(insert_query, record_to_insert)
@@ -154,7 +154,7 @@ class DataBase(object):
                         cursor = connection.cursor()
     
                         print ('Insert in Table : ' , self.database_Table )
-                        insert_query = """ INSERT INTO reisekosten (datum, hotel, strecke, km, kosten) VALUES (%s,%s,%s,%s,%s)"""
+                        insert_query = "INSERT INTO "+ self.database_Table +" (datum, hotel, strecke, km, kosten) VALUES (%s,%s,%s,%s,%s) "
                         record_to_insert = (rk_Datum, rk_Hotel, rk_Strecke, rk_km, rk_Kosten)
                         print(record_to_insert)
                         cursor.execute(insert_query, record_to_insert)
@@ -190,7 +190,8 @@ class DataBase(object):
                         cursor = connection.cursor()
     
                         print ('Insert in Table : ' , self.database_Table )
-                        insert_query = """ INSERT INTO blutdruck (datum, zeit, sys, dia, kommentar) VALUES (%s,%s,%s,%s,%s)"""
+                        insert_query = "INSERT INTO "+ self.database_Table +" (datum, zeit, sys, dia, kommentar) VALUES (%s,%s,%s,%s,%s) "
+                
                         record_to_insert = (bt_Datum, bt_Zeit, bt_Sys, bt_Dia, bt_Kommentar)
                         print(record_to_insert)
                         cursor.execute(insert_query, record_to_insert)
@@ -225,12 +226,13 @@ class DataBase(object):
                                                     database=self.database_Name)
                         cursor = connection.cursor()
     
-                        print ('Insert in Table : ' , self.database_Table )
-                        insert_query = """ INSERT INTO journalnew (datum, erfolg, sport, buch, erkenntnis) VALUES (%s,%s,%s,%s,%s)"""
+                        #print ('Insert in Table : ' , self.database_Table )
+                        insert_query = "INSERT into "+ self.database_Table +" (datum, erfolg, sport, buch, erkenntnis) VALUES (%s,%s,%s,%s,%s) "
+                        print (insert_query)
                         record_to_insert = (j_Datum, j_Erfolg, j_Sport, j_Buch, J_Erkenntnis)
                         print(record_to_insert)
-                        cursor.execute(insert_query, record_to_insert)
 
+                        cursor.execute(insert_query, record_to_insert)
                         connection.commit()
                         count = cursor.rowcount
                         print(count, "Record inserted successfully into >" + self.database_Table)
@@ -266,8 +268,6 @@ class DataBase(object):
 
                     cursor.execute("SELECT * from " + self.database_Table)
                     row = cursor.fetchone()
-
-#       prüfen der rows anhand der Tabellen columns
 
                     while row:
                            #print (str(row[0]) + " " + str(row[1]))

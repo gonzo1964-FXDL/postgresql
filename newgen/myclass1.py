@@ -1,5 +1,7 @@
+#  
+#   python3 myclass1.py insert dkv "Rechnung-DAT" "Rechnung-Steller" "Leistung-DAT" "Rezept-DAT" "L-Geber" "Leistung" "Betrag" "DKB-DAT" "DKV-Betrag"   
+#   python3 myclass1.py insert dkv "07.01.2024" "Dr. Huber" "11.11.2024" " " "Dr. Huber" "Reinigung" "111,11" " " " "
 #
-#   python3 myclass1.py insert dkv "07.01.2024" "Huber" "11.11.2023" " " "Huber" "Reinigung" "111,11" " " " b"
 #   python3 myclass1.py insert reisekosten "08. Mai 2024" "Hotel" "von nach da" "999" "99,99"
 #   python3 myclass1.py insert blutdruck "09.Mai 2024" "11:33" 138 78 Ergometer
 #   python3 myclass1.py insert journal '07.05.2024' 'Glas Zitronensaft, Python Programm, Clarksons Farm' '' 'Buch' ''
@@ -7,8 +9,8 @@
 #   python3 myclass1.py read reisekosten
 #   python3 myclass1.py read dkv
 #   python3 myclass1.py read blutdruck
-#   python3 myclass1.py read journalnew
-#   python3 myclass1.py read depot
+#   python3 myclass1.py read journal
+#   python3 myclass1.py read depo
 #   python3 myclass1.py read km
 #
 #   testen neues read python3 myclass1.py rd ""
@@ -276,6 +278,7 @@ class DataBase(object):
 
                     cur = connection.cursor()
                     cur.execute("SELECT * from " + self.database_Table)
+			# für blutdruck : ORDER BY key_column ASC 
                     rows = cur.fetchall()
                     for row in rows:
                         print (row[0] , row[1] , row[2] , row[3])

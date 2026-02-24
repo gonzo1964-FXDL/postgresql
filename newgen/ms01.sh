@@ -1,0 +1,1 @@
+/Users/michaelspruck/Programmierung/Git/postgresql/backup/postgres/ms01.sh

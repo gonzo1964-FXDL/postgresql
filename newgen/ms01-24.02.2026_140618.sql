@@ -2,8 +2,8 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 15.1
--- Dumped by pg_dump version 15.1
+-- Dumped from database version 16.3
+-- Dumped by pg_dump version 16.3
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -19,6 +19,19 @@ SET row_security = off;
 SET default_tablespace = '';
 
 SET default_table_access_method = heap;
+
+--
+-- Name: ausgaben; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.ausgaben (
+    datum integer,
+    ort character(20),
+    betrag character(10)
+);
+
+
+ALTER TABLE public.ausgaben OWNER TO postgres;
 
 --
 -- Name: blutdruck; Type: TABLE; Schema: public; Owner: mspruck
@@ -48,7 +61,7 @@ CREATE SEQUENCE public.blutdruck_key_column_seq
     CACHE 1;
 
 
-ALTER TABLE public.blutdruck_key_column_seq OWNER TO mspruck;
+ALTER SEQUENCE public.blutdruck_key_column_seq OWNER TO mspruck;
 
 --
 -- Name: blutdruck_key_column_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: mspruck
@@ -85,7 +98,7 @@ CREATE SEQUENCE public.depot_key_seq
     CACHE 1;
 
 
-ALTER TABLE public.depot_key_seq OWNER TO mspruck;
+ALTER SEQUENCE public.depot_key_seq OWNER TO mspruck;
 
 --
 -- Name: depot_key_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: mspruck
@@ -127,13 +140,139 @@ CREATE SEQUENCE public.dkv_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.dkv_id_seq OWNER TO mspruck;
+ALTER SEQUENCE public.dkv_id_seq OWNER TO mspruck;
 
 --
 -- Name: dkv_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: mspruck
 --
 
 ALTER SEQUENCE public.dkv_id_seq OWNED BY public.dkv.id;
+
+
+--
+-- Name: flfbs; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.flfbs (
+    km_id integer NOT NULL,
+    datum character varying(20) NOT NULL,
+    kfz character varying(8),
+    kz character varying(8),
+    km_stand character varying(5),
+    kommentar character varying(50),
+    anfang_datum character varying(20),
+    end_datum character varying(20),
+    monat_km character varying(8),
+    saison_km character varying(8)
+);
+
+
+ALTER TABLE public.flfbs OWNER TO postgres;
+
+--
+-- Name: flfbs_km_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.flfbs_km_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER SEQUENCE public.flfbs_km_id_seq OWNER TO postgres;
+
+--
+-- Name: flfbs_km_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.flfbs_km_id_seq OWNED BY public.flfbs.km_id;
+
+
+--
+-- Name: flhtkl; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.flhtkl (
+    km_id integer NOT NULL,
+    datum character varying(20) NOT NULL,
+    kfz character varying(8),
+    kz character varying(8),
+    km_stand character varying(5),
+    kommentar character varying(50),
+    anfang_datum character varying(20),
+    end_datum character varying(20),
+    monat_km character varying(8),
+    saison_km character varying(8)
+);
+
+
+ALTER TABLE public.flhtkl OWNER TO postgres;
+
+--
+-- Name: flhtkl_km_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.flhtkl_km_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER SEQUENCE public.flhtkl_km_id_seq OWNER TO postgres;
+
+--
+-- Name: flhtkl_km_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.flhtkl_km_id_seq OWNED BY public.flhtkl.km_id;
+
+
+--
+-- Name: flstfi; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.flstfi (
+    km_id integer NOT NULL,
+    datum character varying(20) NOT NULL,
+    kfz character varying(8),
+    kz character varying(8),
+    km_stand character varying(5),
+    kommentar character varying(50),
+    anfang_datum character varying(20),
+    end_datum character varying(20),
+    monat_km character varying(8),
+    saison_km character varying(8)
+);
+
+
+ALTER TABLE public.flstfi OWNER TO postgres;
+
+--
+-- Name: flstfi_km_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.flstfi_km_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER SEQUENCE public.flstfi_km_id_seq OWNER TO postgres;
+
+--
+-- Name: flstfi_km_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.flstfi_km_id_seq OWNED BY public.flstfi.km_id;
 
 
 --
@@ -165,7 +304,7 @@ CREATE SEQUENCE public.journalnew_key_seq
     CACHE 1;
 
 
-ALTER TABLE public.journalnew_key_seq OWNER TO mspruck;
+ALTER SEQUENCE public.journalnew_key_seq OWNER TO mspruck;
 
 --
 -- Name: journalnew_key_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: mspruck
@@ -183,8 +322,8 @@ CREATE TABLE public.journal (
     datum character varying(30) NOT NULL,
     erfolg character varying(100) NOT NULL,
     sport character varying(80) NOT NULL,
-    buch character varying(50) NOT NULL,
-    erkenntnis character varying(100) NOT NULL
+    buch character varying(100) NOT NULL,
+    erkenntnis character varying(300) NOT NULL
 );
 
 
@@ -205,48 +344,6 @@ CREATE TABLE public.journal_klon (
 
 
 ALTER TABLE public.journal_klon OWNER TO postgres;
-
---
--- Name: km; Type: TABLE; Schema: public; Owner: mspruck
---
-
-CREATE TABLE public.km (
-    datum character varying(10) NOT NULL,
-    typ character varying(40) NOT NULL,
-    kennzeichen character varying(10) NOT NULL,
-    km character varying(8) NOT NULL,
-    bemerkung character varying(50) NOT NULL,
-    von character varying(8) NOT NULL,
-    bis character varying(8) NOT NULL,
-    km_monat character varying(10),
-    km_saison character varying(10) NOT NULL,
-    id integer NOT NULL
-);
-
-
-ALTER TABLE public.km OWNER TO mspruck;
-
---
--- Name: km_id_seq; Type: SEQUENCE; Schema: public; Owner: mspruck
---
-
-CREATE SEQUENCE public.km_id_seq
-    AS integer
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-ALTER TABLE public.km_id_seq OWNER TO mspruck;
-
---
--- Name: km_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: mspruck
---
-
-ALTER SEQUENCE public.km_id_seq OWNED BY public.km.id;
-
 
 --
 -- Name: reisekosten; Type: TABLE; Schema: public; Owner: mspruck
@@ -276,13 +373,97 @@ CREATE SEQUENCE public.reisekosten_key_seq
     CACHE 1;
 
 
-ALTER TABLE public.reisekosten_key_seq OWNER TO mspruck;
+ALTER SEQUENCE public.reisekosten_key_seq OWNER TO mspruck;
 
 --
 -- Name: reisekosten_key_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: mspruck
 --
 
 ALTER SEQUENCE public.reisekosten_key_seq OWNED BY public.reisekosten.key;
+
+
+--
+-- Name: toyota; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.toyota (
+    km_id integer NOT NULL,
+    datum character varying(20) NOT NULL,
+    kfz character varying(8),
+    kz character varying(8),
+    km_stand character varying(5),
+    kommentar character varying(50),
+    anfang_datum character varying(20),
+    end_datum character varying(20),
+    monat_km character varying(8),
+    saison_km character varying(8)
+);
+
+
+ALTER TABLE public.toyota OWNER TO postgres;
+
+--
+-- Name: toyota_km_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.toyota_km_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER SEQUENCE public.toyota_km_id_seq OWNER TO postgres;
+
+--
+-- Name: toyota_km_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.toyota_km_id_seq OWNED BY public.toyota.km_id;
+
+
+--
+-- Name: vrscdx; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.vrscdx (
+    km_id integer NOT NULL,
+    datum character varying(20) NOT NULL,
+    kfz character varying(8),
+    kz character varying(8),
+    km_stand character varying(5),
+    kommentar character varying(50),
+    anfang_datum character varying(20),
+    end_datum character varying(20),
+    monat_km character varying(8),
+    saison_km character varying(8)
+);
+
+
+ALTER TABLE public.vrscdx OWNER TO postgres;
+
+--
+-- Name: vrscdx_km_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.vrscdx_km_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER SEQUENCE public.vrscdx_km_id_seq OWNER TO postgres;
+
+--
+-- Name: vrscdx_km_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.vrscdx_km_id_seq OWNED BY public.vrscdx.km_id;
 
 
 --
@@ -307,17 +488,31 @@ ALTER TABLE ONLY public.dkv ALTER COLUMN id SET DEFAULT nextval('public.dkv_id_s
 
 
 --
+-- Name: flfbs km_id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.flfbs ALTER COLUMN km_id SET DEFAULT nextval('public.flfbs_km_id_seq'::regclass);
+
+
+--
+-- Name: flhtkl km_id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.flhtkl ALTER COLUMN km_id SET DEFAULT nextval('public.flhtkl_km_id_seq'::regclass);
+
+
+--
+-- Name: flstfi km_id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.flstfi ALTER COLUMN km_id SET DEFAULT nextval('public.flstfi_km_id_seq'::regclass);
+
+
+--
 -- Name: journalnew key; Type: DEFAULT; Schema: public; Owner: mspruck
 --
 
 ALTER TABLE ONLY public.journalnew ALTER COLUMN key SET DEFAULT nextval('public.journalnew_key_seq'::regclass);
-
-
---
--- Name: km id; Type: DEFAULT; Schema: public; Owner: mspruck
---
-
-ALTER TABLE ONLY public.km ALTER COLUMN id SET DEFAULT nextval('public.km_id_seq'::regclass);
 
 
 --
@@ -328,11 +523,431 @@ ALTER TABLE ONLY public.reisekosten ALTER COLUMN key SET DEFAULT nextval('public
 
 
 --
+-- Name: toyota km_id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.toyota ALTER COLUMN km_id SET DEFAULT nextval('public.toyota_km_id_seq'::regclass);
+
+
+--
+-- Name: vrscdx km_id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.vrscdx ALTER COLUMN km_id SET DEFAULT nextval('public.vrscdx_km_id_seq'::regclass);
+
+
+--
+-- Data for Name: ausgaben; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.ausgaben (datum, ort, betrag) FROM stdin;
+16052024	REWE                	115,41    
+16052024	EDEKA               	99,60     
+25052024	KIK                 	66,39     
+25052024	Bavaria Petrol      	80,84     
+25052024	Getränke Orterer    	18,61     
+25052024	Aldi                	59,68     
+25052024	DM                  	46,00     
+25052024	TEDI                	10,00     
+25052024	Restaurant Radici   	45,00     
+31052024	REWE                	24,88     
+31052024	Bavaria Patrol      	25,20     
+1062024	Shell               	58,79     
+1062024	McDonalds           	27,67     
+3062024	Nahkauf             	107,30    
+6062024	Nahkauf             	92,36     
+7062024	Nahkauf             	31,26     
+8062024	KVB                 	8,50      
+8062024	extrablatt          	35,00     
+8062024	GT World of Beauty  	170,96    
+8062024	Tabak               	8,80      
+9062024	McDOnalds           	5,48      
+9062024	BAT Spessart        	19,63     
+10062024	REWE                	78,39     
+10062024	UPS                 	30,00     
+10062024	Post                	13,16     
+10062024	Hagebau             	22,47     
+12062024	MVV                 	38,50     
+12062024	AC/DC Konzert       	33,20     
+13062024	DM                  	5,90      
+13062024	Tanken              	72,33     
+13062024	Eis                 	6,40      
+14062024	Mühldorf Kaffee     	20,00     
+14062024	Grünbach Spare Ribs 	50,00     
+17062024	REWE                	104,21    
+18062024	Tabak Brucker       	100,20    
+20062024	DM                  	74,45     
+22062024	McDonalds           	22,27     
+22062024	Jet                 	44,90     
+22062024	Total               	58,66     
+22062024	Nahkauf             	77,27     
+24062024	Nahkauf             	56,07     
+25062024	Tickets             	12,00     
+27062024	Bar                 	100,00    
+27062024	Nahkauf             	109,30    
+16052024	REWE                	115,41    
+16052024	EDEKA               	99,60     
+25052024	KIK                 	66,39     
+25052024	Bavaria Petrol      	80,84     
+25052024	Getränke Orterer    	18,61     
+25052024	Aldi                	59,68     
+25052024	DM                  	46,00     
+25052024	TEDI                	10,00     
+25052024	Restaurant Radici   	45,00     
+31052024	REWE                	24,88     
+31052024	Bavaria Patrol      	25,20     
+1062024	Shell               	58,79     
+1062024	McDonalds           	27,67     
+3062024	Nahkauf             	107,30    
+6062024	Nahkauf             	92,36     
+7062024	Nahkauf             	31,26     
+8062024	KVB                 	8,50      
+8062024	extrablatt          	35,00     
+8062024	GT World of Beauty  	170,96    
+8062024	Tabak               	8,80      
+9062024	McDOnalds           	5,48      
+9062024	BAT Spessart        	19,63     
+10062024	REWE                	78,39     
+10062024	UPS                 	30,00     
+10062024	Post                	13,16     
+10062024	Hagebau             	22,47     
+12062024	MVV                 	38,50     
+12062024	AC/DC Konzert       	33,20     
+13062024	DM                  	5,90      
+13062024	Tanken              	72,33     
+13062024	Eis                 	6,40      
+14062024	Mühldorf Kaffee     	20,00     
+14062024	Grünbach Spare Ribs 	50,00     
+17062024	REWE                	104,21    
+18062024	Tabak Brucker       	100,20    
+20062024	DM                  	74,45     
+22062024	McDonalds           	22,27     
+22062024	Jet                 	44,90     
+22062024	Total               	58,66     
+22062024	Nahkauf             	77,27     
+24062024	Nahkauf             	56,07     
+25062024	Tickets             	12,00     
+27062024	Bar                 	100,00    
+27062024	Nahkauf             	109,30    
+29062024	Ticket              	8,50      
+29062024	Extrablatt          	55,00     
+29062024	Nahkauf             	23,32     
+30062024	Summe Juni 2024     	1810,99   
+1072024	Total               	52,18     
+2072024	Nahkauf             	85,46     
+5072024	McDonalds           	3,79      
+5072024	Aral                	70,62     
+6072024	Aral                	79,23     
+6072024	Aldi                	100,92    
+9072024	Bar                 	70,00     
+12072024	Ortere              	27,63     
+12072024	Aldi                	105,66    
+12072024	DM                  	131,65    
+12072024	TEDI                	13,55     
+13072024	BAr                 	100,00    
+13072024	Rossmann            	69,31     
+13072024	OMV                 	34,78     
+16072024	Döner               	9,50      
+16072024	Bavaria Patrol      	51,61     
+17072024	Brief, Brezen       	5,00      
+18072024	ED Meldebehörde     	5,00      
+18072024	Müller Markt        	122,33    
+18072024	Media Markt         	41,98     
+18072024	Schuh Center        	89,85     
+18072024	Rewe                	165,18    
+19072024	Edeka               	67,04     
+20072024	Biergarten          	9,50      
+20072024	Bavaria Petrol      	25,20     
+21072024	Dostojewskij        	18,00     
+22072024	Orterer             	28,88     
+23072024	REWE                	92,69     
+26072024	Hunkemöller         	144,24    
+26072024	Bavaria Petrol      	58,54     
+27072024	Schliersee          	17,00     
+27072024	amazon              	21,16     
+28072024	amazon              	44,98     
+28072024	amazon              	25,99     
+28072024	amazon              	35,99     
+29072024	C&A                 	35,98     
+29072024	REWE                	50,13     
+2082024	Bavaria Petrol      	42,00     
+2082024	Bar                 	250,00    
+3082024	Wenns Bier          	16,80     
+3082024	Kühtai essen        	45,00     
+3082024	Vorderriss Mout     	6,00      
+3082024	tanken Bad Tölz     	29,18     
+4082024	Kaunerstrasse mout  	18,50     
+4082024	Gasthof Post Wenns  	60,00     
+4082024	Tankstelle Pfunds   	29,99     
+4082024	Acla da fans        	155,12    
+5082024	Stelvio T-Shirts    	63,00     
+5082024	tanken Nauders      	20,64     
+5082024	Bormio essen        	44,20     
+5082024	Bormio Bier         	18,00     
+6082024	Hotel Fondo         	11,00     
+6082024	Fondo tanken        	26,32     
+6082024	Fondo Bier, Eis     	22,00     
+6082024	Fondo Supermarkt    	10,92     
+6082024	Fondo Hotel essen   	38,00     
+7082024	Passo Pordoi T-Shirt	75,60     
+7082024	Essen Hotel Pietro  	56,00     
+8082024	tanken  Alleghe     	23,37     
+8082024	Kaffe Falzarego     	2,00      
+8082024	Kaffee,Eistee Brixen	4,50      
+8082024	Innsbruck Spar      	19,45     
+8082024	Automat             	09,00     
+8082024	Gruberhof           	19,00     
+9082024	tanken Schwaz       	23,07     
+9082024	McDonalds Erding    	20,86     
+9082024	REWE                	106,84    
+9082024	KIK                 	34,94     
+10082024	DM                  	51,85     
+10082024	Edeka               	26,29     
+10082024	Bavaria Petrol      	99,13     
+12082024	Brezen, Baguette    	8,50      
+13082024	Schliersee          	15,00     
+13082024	Esso tanken         	29,78     
+14082024	Kronthaler          	21,50     
+15082024	Chiemsee            	50,00     
+15082024	Chiemsee Parken     	3,20      
+17082024	REWE                	125,48    
+24082024	Bavaria             	48,70     
+26082024	REWE                	198,04    
+27082024	Parken              	3,00      
+27082024	Landratsamt         	79,00     
+27082024	DM                  	79,25     
+27082024	Eishockey           	6,90      
+29082024	Eishockey           	6,90      
+30082024	Eishockey           	6,90      
+31082024	Bavaria Patrol      	33,13     
+31082024	Edeka               	36,28     
+31082024	Summe Aug           	2500,19   
+2092024	Shell               	56,50     
+4092024	Bäcker              	10,25     
+4092024	Vinzenmurr          	9,30      
+4092024	Parken              	2,50      
+6092024	Aldi                	122,03    
+6092024	Orterer             	49,62     
+6092024	Tedi                	10,55     
+7092024	Fürmetz             	26,88     
+7092024	Spar                	30,57     
+9092024	Vinzenzmurr         	15,00     
+11092024	Kino ED             	17,90     
+15092024	essen               	70,00     
+15092024	Kaffee              	7,20      
+15092024	Dream Machines      	8,90      
+14092024	BAckhändl           	25,00     
+14092024	T-Shirt             	66,00     
+13092024	McDonalds           	28,10     
+13092024	Kurtaxe             	7,00      
+13092024	Kaffee              	11,40     
+13092024	Billa               	38,13     
+16092024	REWE                	28,91     
+16092024	Edeka               	91,79     
+16092024	amazon              	32,12     
+16092024	amazon              	43,96     
+18092024	Edeka               	66,69     
+20092024	REWE                	124,17    
+21092024	Holki               	16,00     
+22092024	Fürmetz             	28,70     
+23092024	Fürmetz             	55,35     
+23092024	Fürmetz waschen     	6,00      
+24092024	Edeka               	37,84     
+24092024	Woolworth           	55,00     
+27092024	Jet                 	29,39     
+29092024	tanken              	22,50     
+29092024	tanken              	32,03     
+29092024	McDonalds           	24,14     
+26092024	MVV Ticket          	14,00     
+26092024	FC Moto Jacke       	461,65    
+26092024	FC Moto Jacke       	541,44    
+30092024	Rewe                	162,36    
+2102024	LA Stadion          	10,50     
+2102024	amazon              	14,99     
+2102024	Kennzeichen         	9,99      
+3102024	amazon              	34,35     
+3102024	McDonalds VIB       	35,80     
+3102024	Fürmetz             	49,05     
+4102024	LA Stadion          	10,65     
+6102024	RO Stadion          	12,20     
+6102024	RO Stadion          	15,90     
+7102024	REWE                	125,05    
+5102024	Afroshop            	20,98     
+5102024	Afroshop            	34,00     
+6102024	Postsendung         	6,99      
+8102024	Zulassung           	41,60     
+10102024	Woolworth           	103,75    
+11102024	REWE                	32,99     
+12102024	IHLE                	24,53     
+12102024	Esso                	51,23     
+14102024	Kantine             	6,08      
+14102024	Shell AB            	57,19     
+14102024	McDonalds           	22,65     
+15102024	Konto Rosi          	10,00     
+16102024	DM                  	62,85     
+16102024	Apotheke            	28,37     
+16102024	Rewe                	181,75    
+20102024	Leoni               	100,00    
+19102024	C&A                 	246,27    
+19102024	REWE                	9,28      
+21102024	Bavaria             	77,22     
+18102024	amazon              	19,99     
+19102024	C&A                 	49,99     
+22102024	Pötzinger           	356,99    
+24102024	Müller              	328,80    
+24102024	Kreitmaier          	10,45     
+25102024	LA Station          	22,35     
+25102024	Schmuck             	69,00     
+25102024	GT                  	49,99     
+25102024	WorldRemit          	20,71     
+26102024	Edeka               	290,93    
+26102024	Avira               	49,95     
+27102024	ED Stadion          	11,50     
+1112024	ED Stadion          	11,50     
+2112024	amazon              	494,45    
+2112024	DM                  	28,25     
+2112024	Orterer             	24,97     
+31102024	Bräuhaus            	38,00     
+31102024	Bahn                	29,00     
+2112024	Eishockey           	6,90      
+3112024	amazon              	35,99     
+3112024	amazon              	14,28     
+3112024	Mühldorf            	11,00     
+3112024	Mühldorf            	38,50     
+3112024	Eishockey           	6,90      
+5112024	Aldi                	111,61    
+9112024	Rewe                	108,75    
+10112024	ED Gladiator        	75,00     
+13112024	Patrol              	56,31     
+16112024	REWE                	211,63    
+17112024	LA Stadion          	13,90     
+18112024	Vinzenzmurr         	2,70      
+23112024	Schuh Max           	219,95    
+23112024	Rewe                	188,63    
+24112024	McDonalds           	23,36     
+25112024	Post                	0.85      
+25112024	Vinzenzmurr         	3,70      
+26112024	DM                  	8,70      
+29112024	Wurzer Müll         	30,00     
+2122024	LA XMAS             	45,00     
+2122024	Vinzenzmurr         	2,50      
+1122024	Gref & Völsing      	118,40    
+1122024	Anzug               	367,20    
+4122024	Schuhe              	122,75    
+4122024	Rewe                	146,21    
+3122024	LA Tickets          	34,00     
+5122024	MVV                 	15,00     
+5122024	Tollwood            	50,00     
+5122024	Afro shop           	146,94    
+6122024	LA Stadion          	12,10     
+6122024	LA Stadion          	6,95      
+7122024	Vinzesmurr          	7,40      
+7122024	Schloss Schleißheim 	12,00     
+10122024	Trigema             	137,25    
+10122024	Schuhe              	79,95     
+10122024	DM                  	150,50    
+13122024	Fürmetz             	42,27     
+13122024	ED Xmas Markt       	34,00     
+14122024	REWE                	209,80    
+15122024	ED Stadion          	6,00      
+17122024	Trigema             	140       
+18122024	Heine               	109.98    
+20122024	GT-Buty             	49.99     
+20122024	Orterer             	49.74     
+20122024	Rewe                	148.85    
+21122024	Wasserburg          	5         
+22122024	Church              	10        
+24122024	WorldRemit          	26.99     
+24122024	WorldRemit          	150.09    
+24122024	Forstner            	400       
+24122024	WorldRemit          	26.99     
+28122024	Bahn                	19        
+28122024	Rewe                	11.37     
+28122024	amazon              	9.99      
+24122024	amazon              	5.99      
+27122024	amazon              	3.59      
+29122024	ED-Stadion          	8         
+29122024	McDonalds           	20.26     
+29122024	Heine               	42.98     
+3012025	amazon              	3.99      
+3012025	Tickets-Gospel      	84.9      
+3012025	Tickets-RO          	38        
+3012025	Oilers              	6.9       
+3012025	RO                  	10.4      
+3012025	RO                  	11        
+3012025	RO-Parkhaus         	5         
+4012025	amazon              	7.9       
+5012025	LA Stadion          	11        
+7012025	Burger King         	10.29     
+7012025	Edeka               	5.5       
+11012025	WorldRemit          	20        
+11012025	Rewe                	208.02    
+12012025	Church              	5         
+7012025	Western-Union       	1133.94   
+16012025	Miesbach            	50        
+16012025	Agip                	56.27     
+17012025	Udemy               	27.98     
+18012025	Chiemsee            	61.9      
+19012025	LA                  	13.15     
+20012025	Hagebaumarkt        	50.98     
+21012025	WorldRemit          	26.92     
+21012025	WorldRemit          	53.84     
+21012025	WorldRemit          	15        
+21012025	Edeka               	15.5      
+21012025	Dream Machines      	7.9       
+22012025	Fürmetz             	56.17     
+22012025	Penny               	94.51     
+25012025	Mühldorf            	41        
+27012025	WorldRemit          	20.99     
+28012025	Hagebaumarkt        	219.94    
+28012025	Gabriel             	16.5      
+28012025	Edeka               	12.1      
+30012025	Hagebaumarkt        	14.48     
+31012025	REWE                	190.54    
+1022025	Burghausen          	50        
+1022025	Bahn Ticket         	27        
+2022025	Church              	10        
+5022025	Edeka               	11.5      
+5022025	Vinzenzmurr         	3.5       
+5022025	Woolworth           	79.8      
+5022025	Kik                 	55.93     
+5022025	McDonalds           	31.33     
+7022025	München             	40        
+7022025	München             	17.5      
+8022025	McDonals            	11.86     
+8022025	Shell               	66.85     
+8022025	Shell               	72.49     
+8022025	Shell               	6.58      
+9022025	Shell               	71.4      
+9022025	Döner               	25        
+9022025	KBV                 	11.45     
+10022025	Köln-Imperial       	83.4      
+11022025	Porzer-Wirtshaus    	45        
+12022025	KBV                 	11.45     
+13022025	McDonalds           	29.13     
+13022025	McDonalds           	6.48      
+12022025	Löse-essen          	23.6      
+15022025	ENi                 	79.92     
+15022025	Bat                 	54.83     
+15022025	Bad-Camberg         	17.68     
+17022025	WorlRemit           	20        
+14022025	Köse-essen          	23.6      
+17022025	DM                  	125.15    
+17022025	Aldi                	87.66     
+18022025	WorldRemit          	20.99     
+19022025	WorldRemit          	70        
+22022025	Ticket              	38        
+22022025	WorlRemit           	27        
+22022025	WorlRemit           	15.5      
+22022025	Edeka               	30.95     
+\.
+
+
+--
 -- Data for Name: blutdruck; Type: TABLE DATA; Schema: public; Owner: mspruck
 --
 
 COPY public.blutdruck (datum, zeit, sys, dia, kommentar, key_column) FROM stdin;
- 01. April 2024	08:49	161	100	ohne Tablette	1
 24. April 2024	11:04	152	88	 	106
 1. April 2024	12:27	143	87	Ergometere	2
 1. April 2024	17:37	160	94	na	3
@@ -407,10 +1022,24 @@ COPY public.blutdruck (datum, zeit, sys, dia, kommentar, key_column) FROM stdin;
 04. Mai 2024	10:50	137	82	Ergometer	135
 05. Mai 2024	11:02	128	79	Ergometer	137
 07. Mai 2024	10:10	144	87	 	139
-09.Mai 2024	15:51	142	81	Ergometer	143
-11.Mai 2024	09:54	130	84	Ergometer	145
-13.Mai 2024	07:15	155	93	 	147
-13.Mai 2024	17:15	135	83	Ergometer	149
+19. Mai 2024	11:20	143	78	 	159
+23. Mai 2024	17:39	156	90	Ergometer	162
+15. Mai 2024	13:27	147	87	Übungen	153
+18. Mai 2024	10:54	151	88	 	157
+22. Mai 2024	19:00	147	70	Ergometer	160
+09. Mai 2024	15:51	142	81	Ergometer	143
+11. Mai 2024	09:54	130	84	Ergometer	145
+13. Mai 2024	17:15	135	83	Ergometer	149
+13. Mai 2024	14:00	134	76	Ergometer	151
+18. Mai 2024	10:07	144	85	Ergometer	155
+25. Mai 2024	11:30	130	81	Ergometer, R	164
+25. Mai 2024	15:55	140	82	 	166
+1. April 2024	08:49	161	100	ohne Tablette	1
+10. Juni 2024	12:37	141	82		168
+13. Mai 2024	07:15	155	93	 	147
+12. Juni 2024	13:12	127	73	laufen	170
+16. Juni 2024	10:50	139	82	laufen	172
+19. Juni 2024	12:34	132	71	laufen	174
 23. April 2024	15:20	137	81	na	58
 23. April 2024	17:12	135	74	nach Ergometer	59
 24. April 2024	07:30	156	98	ohne Tablette	60
@@ -431,10 +1060,25 @@ COPY public.blutdruck (datum, zeit, sys, dia, kommentar, key_column) FROM stdin;
 04. Mai 2024	17:38	150	88	 	136
 06. Mai 2024	12:44	136	81	Ergometer	138
 08. Mai 2024	13:07	144	85	Ergometer	140
-09.Mai 2024	11:33	138	78	Ergometer	142
-10.Mai 2024	11:02	140	81	Ergometer	144
-12.Mai 2024	10:46	137	75	Ergometer	146
-13.Mai 2024	11:20	144	88	 	148
+14. Mai 2024	09:54	149	92	 	150
+19. Mai 2024	10:29	142	83	Ergometer	158
+18. Mai 2024	10:50	138	77	 	156
+09. Mai 2024	11:33	138	78	Ergometer	142
+10. Mai 2024	11:02	140	81	Ergometer	144
+12. Mai 2024	10:46	137	75	Ergometer	146
+13. Mai 2024	11:20	144	88	 	148
+15. Mai 2024	09:12	160	99	Tabletten	152
+15. Mai 2024	19:27	139	80	Ergometer	154
+23. Mai 2024	12:00	147	84	ohne HCT	161
+24. Mai 2024	17:11	130	80	Ergometer, R ; Vocado HCT	163
+25. Mai 2024	11:32	132	81	Ergometer, L	165
+26. Mai 2024	11:09	144	80	 	167
+11. Juni 2024	17:23	134	78	laufen	169
+14. Juni 2024	11:42	130	82	laufen	171
+18. Juni 2024	13:37	141	78	Ergometer	173
+21. Juni 2024	08:42	143	88		175
+18. Juli 2024	10:28	154	86	 	176
+06. Sept. 2024	08:12	153	89	 	177
 \.
 
 
@@ -662,10 +1306,10 @@ COPY public.dkv (rechnungs_datum, rechnungs_steller, leistungs_datum, rezept_dat
 20.07.2023	Rathaus Apotheke	0	20.07.2023	Dr. Huber	Tabletten, Salbe	28,88	19.01.2024	28,88	145
 29.12.2023	Hautarzt	20.07.2023		Dr. Huber		89,95	19.01.2024	89,95	147
 09.08.2023	Med. Labor Passau	20.07.2023		Dr. Huber	Labor	61,87	19.01.2024	61,87	149
-							 	 	162
-							 	 	163
 10.07.2023	Augenarzt	10.07.2023	10.07.2023	Dr. Widmann	Tropfen	0.00	 	 	141
+19.05.2024	Dr. Bloch	18.04,2024, 16.05.2024		Dr. Bloch	EKG	86,88	24.05.20424	86,88	163
 11.03.2024	Rathaus Apotheke		06.03.2024	Dr. Bloch	Rezept Vocado	109,54	20.03.2024	109,54	156
+17.05.2024	Dr. Huber	16.05.2024	 	Dr. Huber	Reinigung	269,31	02.07.2024	269,31	190
 30.03.2023	Dr. Huber	30.03.2023		Dr. Huber	Zahnreinigung	261,27	17.04.2023	261,27	139
 01.04.2024	Dr. Bloch	28.03.2024		Dr. Bloch	Checkup 28.03.2024; 18.04.2024	336,94	02.05.2024	336,94	158
 15.04.2024	Synlad Labor	28.03.2024			Labor	57,56	02.05.2024	57,56	159
@@ -680,6 +1324,141 @@ COPY public.dkv (rechnungs_datum, rechnungs_steller, leistungs_datum, rezept_dat
 21.11.2023	Dr. Stolz	24.08.2023	24.08.2023	Dr. Stolz		122,45	07.12.2023	122,45	152
 24.08.2023	Apotheke		24.08.2023	Dr. Stolz		56,13	07.11.2023	0,30	153
 16.11.2023	Dr. Bloch		16.11.2023	Dr. Bloch	Vocado	109,54	02.12.2023	109,54	154
+18.05.2024	Rathaus Apotheke		16.05.2042	Dr. Bloch	Vocado & HCT	91,02	24.05.2024	91,02	162
+03.11.2025	Rathaus Apotheke	 	28.10.2025 	Dr. Bloch	Rezept Vocado 	54,86	07.11..2025	54,86	208
+29.07.2025	Rathaus Apotheke	29.07.2025	29.07.2025	Dr. Bloch	Rezept Vocado	54,86	03.08.2025	54,86	207
+16.04.2025	Rathaus Apotheke	 	14.04.2025	Dr. Bloch	Vocado	54,86	 	 	205
+18.12.2024	Rathaus Apotheke Apotheke 	 	16.12.2024	Dr. Bloch	Vocado	54,86	23.12.2024	54,86	203
+30.08.2024	Rathaus Apotheke	 	27.08.2024	MVZ Dorfen	Rezept Plenvu	26,83	25.09.2024	26,83	191
+23.09.2024	MVZ Dorfen	04.09.2024	 	MVZ Dorfen	Darmspiegelung	743,53	25.09.2024	743,53	192
+20.09.2024	Pathologie München	04.09.2024	 	Pathologie München	Histol. Untersuchung	85,88	30.09.2024	85,88	198
+18.09.2024	Rathaus Apotheke	 	16.09.2024	Dr. Bloch	Vocado & HCT	54,86	30.09.2024	54,86	194
+ 	Labor	11.10.2024	 	 	Blutuntersuchung		 	 	200
+19.11.2024	Dr Bloch	11.10.2024	 	Dr. Bloch	Blutabnahme	55,84	28.11.2024	55,84	199
+27.12.2025	Dr. Bloch 	27.12.2025 	 	Dr. Bloch	 	00,00	dd.mm.2025	00,00	210
+27.11.2025	Dr. Huber 	27.11.2025 	 	Dr. Huber	Zahnreinigung	264,23	08.01.2026	264,23	209
+22.11.2024	Dr Huber	21.11.2024	 	Dr. Huber	Zahnreinigung	282,61	 	 	201
+11.02.2026	Dr. Bloch 	 	11.02.2026	Dr. Bloch	Rezeot Vocado	54,85	20.02.2026	54.86	211
+20.05.2025	Dr Huber	20.05.2025	 	Dr. Huber	Zahnreinigung		 	 	206
+\.
+
+
+--
+-- Data for Name: flfbs; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.flfbs (km_id, datum, kfz, kz, km_stand, kommentar, anfang_datum, end_datum, monat_km, saison_km) FROM stdin;
+1	20. Aug 22				Übergabe				
+2	31. Aug 22				KM Stand	20. Aug 22	31. Aug 22		722
+3	30. Sep 22			1296	KM Stand	01. Sep 22	30. Sep 22		574
+4	31. Okt 22			1500	KM Stand	01. Okt 22	31. Okt 22		204
+5	1. Mär 23								
+6	1. Mär 24								
+\.
+
+
+--
+-- Data for Name: flhtkl; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.flhtkl (km_id, datum, kfz, kz, km_stand, kommentar, anfang_datum, end_datum, monat_km, saison_km) FROM stdin;
+1	18. Mai 19	FLHTKL	MB-XX 36		gekauft				
+2	23. Mai 19				Übergabe in Augsburg				
+3	31. Mai 19			646	KM Stand	23. Mai 19	31. Mai 19	646	
+4	07. Jun 19			1487	1600 km Inspektion				
+5	30. Jun 19			3706	KM Stand	01. Jun 19	30. Jun 19	3060	3706
+6	30. Jul 19			5831	Penzl V2 Speed Chrome Charlie C-12Uhr				
+7	31. Jul 19			5853	KM Stand	01. Jul 19	31. Jul 19	2147	5853
+8	31. Aug 19			8990	KM Stand	01. Aug 19	31. Aug 19	3137	8990
+9	04. Sep 19			9167	8000 km Inspektion				
+10	30. Sep 19			11087	KM Stand	01. Sep 19	30. Sep 19	2097	11087
+11	31. Okt 19			12655	KM Stand	01. Okt 19	31. Okt 19	1568	12655
+12	30. Nov 19			13027	KM Stand - Motorrad Saison Ende	01. Nov 19	30. Nov 19	372	13027
+13	17. Feb 20			13027	16000 km Inspektion				
+14	1. Mär 20			13027	KM Stand - Motorrad Saison Anfang				
+15	31. Mär 20			13557	KM Stand	1. Mär 20	31. Mär 20	530	
+16	30. Apr 20			13785	KM Stand	01. Apr 20	30. Apr 20	228	758
+17	31. Mai 20			14821	KM Stand	01. Mai 20	31. Mai 20	1036	1794
+18	30. Jun 20			15692	KM Stand	01. Jun 20	30. Jun 20	871	2665
+19	24. Jul 20			17085	Wilbers Fahrwerk				
+20	31. Jul 20			17907	KM Stand	01. Jul 20	31. Jul 20	2215	4880
+21	31. Aug 20			18813	KM Stand	01. Aug 20	31. Aug 20	906	5786
+22	30. Sep 20			20162	KM Stand	01. Sep 20	30. Sep 20	1349	7135
+23	31. Okt 20			20449	KM Stand	01. Okt 20	31. Okt 20	287	7422
+24	30. Nov 20			20449	KM Stand - Motorrad Saison Ende	01. Nov 20	30. Nov 20		7422
+25	1. Mär 21			20449	KM Stand - Motorrad Saison Anfang				
+26	31. Mär 21			20602	KM Stand	1. Mär 21	31. Mär 21		153
+27	30. Apr 21			21168	KM Stand	01. Apr 21	30. Apr 21	566	719
+28	31. Mai 21			21907	KM Stand	01. Mai 21	31. Mai 21	739	1458
+29	30. Jun 21			22448	KM Stand	01. Jun 21	30. Jun 21	541	1999
+30	31. Jul 21			22629	KM Stand	01. Jul 21	31. Jul 21	181	2180
+31	31. Aug 21			22848	KM Stand	01. Aug 21	31. Aug 21	219	2399
+32	30. Sep 21			23227	KM Stand	01. Sep 21	30. Sep 21	379	2778
+33	31. Okt 21			23919	KM Stand	01. Okt 21	31. Okt 21	6921	3470
+34	1. Mär 22			23919					
+35	31. Mai 22			26269	KM Stand	1. Mär 22	31. Mai 22		2350
+36	30. Jun 22			28818	KM Stand	01. Jun 22	30. Jun 22		2495
+37	31. Jul 22			31220	KM Stand	01. Jul 22	31. Jul 22	2402	4897
+38	31. Aug 22			31760	KM Stand	01. Aug 22	31. Aug 22	540	5437
+39	30. Sep 22			31895	KM Stand	01. Sep 22	30. Sep 22	135	5572
+40	31. Okt 22			33177	KM Stand	01. Okt 22	31. Okt 22	1282	6854
+41	1. Mär 23			33177					
+42	31. Mär 23			33805	KM Stand	1. Mär 23	31. Mär 23		628
+43	30. Apr 23			34471	KM Stand	01. Apr 23	30. Apr 23	666	1284
+44	31. Mai 23			35442	KM Stand	01. Mai 23	31. Mai 23	971	2255
+45	30. Jun 23			35898	KM Stand	01. Jun 23	30. Jun 23	456	2711
+46	31. Jul 23			37654	KM Stand	01. Jul 23	31. Jul 23	1756	4467
+47	31. Aug 23			38414	KM Stand	01. Aug 23	31. Aug 23	760	5227
+48	30. Sep 23			39756	KM Stand	01. Sep 23	30. Sep 23	1342	6569
+49	31. Okt 23			40230	KM Stand	01. Okt 23	31. Okt 23	474	7043
+50	1. Mär 24			40230					
+51	31. Mär 24			40804	KM Stand	1. Mär 24	31. Mär 24		574
+52	30. Apr 24			41745	KM Stand	01. Apr 24	30. Apr 24	941	1515
+53	31. Mai 24			42419	KM Stand	01. Mai 24	31. Mai 24	674	2189
+55	31. Jul 24				KM Stand	01. Jul 24	31. Jul 24		
+54	30. Jun 24			42516	KM Stand	01. Jun 24	30. Jun 24	97	2286
+56	31. Aug 24	 	 	45294	KM Stand	01. Aug 24	31. Aug 24	2778	5064
+61	30. Sep 2024	 	 	46900	KM Stand	01. Sep 24	30. Sep 24	1606	6670
+\.
+
+
+--
+-- Data for Name: flstfi; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.flstfi (km_id, datum, kfz, kz, km_stand, kommentar, anfang_datum, end_datum, monat_km, saison_km) FROM stdin;
+1	16. Okt 20	FLSTFI	ED-X 646		gekauft				
+2	13. Feb 21			92210	57297 Milen				
+3	31. Mär 21			92593	57597 Milen = 300 Milen gefahren	1. Mär 21	31. Mär 21		482
+4	30. Apr 21			93218	57923 Milen = 326 Milen gefahren	01. Apr 21	30. Apr 21	525	1007
+5	31. Mai 21			93733	58243 Milen = 515 Milen gefahren	01. Mai 21	31. Mai 21	828	1353
+6	30. Jun 21			94370	58639 Milen = 396 Milen gefahren	01. Jun 21	30. Jun 21	637	1749
+7	31. Jul 21			94776	58891 Milen	01. Jul 21	31. Jul 21	408	2157
+8	31. Aug 21			95091	59087 Milen	01. Aug 21	31. Aug 21	315	2472
+9	30. Sep 21			95411	59286 Milen	01. Sep 21	30. Sep 21	320	2792
+10	31. Okt 21			95592	59398 Milen	01. Okt 21	31. Okt 21	181	2973
+11	1. Mär 22			95592					
+12	31. Mai 22			95939	59614 Milen	1. Mär 22	31. Mai 22		347
+13	30. Jun 22			96065	59692 Milen	01. Jun 22	30. Jun 22	526	873
+14	31. Jul 22			96411	59907 Milen	01. Jul 22	31. Jul 22	346	1219
+15	31. Aug 22			96411					
+16	30. Sep 22			96639	60049 Milen	01. Aug 22	31. Aug 22	228	1447
+17	31. Okt 22			96886	60202 Milen	01. Okt 22	31. Okt 22	247	1694
+18	1. Mär 23								
+19	31. Mär 23			96965	60251 Milen	01. Feb 23	31. Mär 23		79
+20	30. Apr 23					01. Apr 23	30. Apr 23		
+21	31. Mai 23			97153	60368 Milen	01. Mai 23	31. Mai 23	188	267
+22	30. Jun 23			97241	60423 Milen	01. Jun 23	30. Jun 23	88	355
+23	31. Jul 23			97360	60497 Milen	01. Jul 23	31. Jul 23	119	474
+24	31. Aug 23			97603	60648 Milen	01. Aug 23	31. Aug 23	243	717
+25	30. Sep 23			97891	60827 Milen	01. Sep 23	30. Sep 23	288	1005
+26	31. Okt 23			98004	60897 Milen	01. Okt 23	31. Okt 23	113	1118
+27	1. Mär 24								
+28	31. Mär 24			98036	60917 Milen	1. Mär 24	31. Mär 24		32
+29	30. Apr 24				60917 Milen	01. Apr 24	30. Apr 24	0	
+30	31. Mai 24					01. Mai 24	31. Mai 24		
+31	30. Jun 24					01. Jun 24	30. Jun 24		
+32	31. Jul 24					01. Jul 24	31. Jul 24		
 \.
 
 
@@ -3664,6 +4443,7 @@ COPY public.journal (key, datum, erfolg, sport, buch, erkenntnis) FROM stdin;
 6048	08.03.2024	Gambach nach Köln farhen	Bank	Gehe mit den Toten, Auf zerbrochenem Glas	
 6049	09.03.2024	Köln in der Stadt, Film High Heat, Film Borrego		Auf zerbrochenem Glas, Vom gleichem Blut	
 6050	10.03.2024	Köln nach ED gefahren über Koblenz, Serie Treadstone			
+6190	31.07.2024	Glas Zitronensaft	 	 	 
 6051	11.03.2024	Schwitzbad, FLHTKL fahren, Serie Treadstone	Bank, Nacken, Rücken	Vom gleichem Blut	
 6052	12.03.2024	Schwitzbad, Serie Treadstone	Bank, Nacken, Rücken		
 6053	13.03.2024	Schwitzbad, Eishockey LA vs Kaufbeuren	Bank	Vom gleichem Blut	
@@ -3726,6 +4506,655 @@ COPY public.journal (key, datum, erfolg, sport, buch, erkenntnis) FROM stdin;
 6110	11.05.2024	Glas Zitronensaft, S-Bahn STA, Eishockey D vs USA	Ergometer 40 Min	Dem Tod verpflichtet	
 6111	12.05.2024	Glas Zitronensaft, Schwitzbad, FLHTKL fahren Pfaffenhofen, Biergarten Grünbach	Ergometer 26 Min	Dem Tod verpflichtet	
 6112	13.05.2024	Glas Zitronensaft, Meldeamt Erding. Eishockey D vs Schweden	Ergometer 45 Min	Dem Tod verpflichtet	
+6134	04.06.2024	Glas Zitronensaft	Laufen Köln Rhein	Das Grab in der Ardeche	 
+6132	03.06.2024	Glas Zitronensaft	Laufen Köln Rhein	Das Grab in der Ardeche	 
+6200	10.08.2024	Glas Zitronensaft	 	 	 
+6113	14.05.2024	Glas Zitronensaft, Schwitzbad, VSC mit ssh verbinden, Film Expandables 4	Ergometer 30 Min, Bank, Knee Cross, Nacken	Dem Tod verpflichtet	
+6114	15.05.2024	Glas Zitronensaft, Schwitzbad, Eishockey Deutschland vs Lettland	Ergometer 30 Min,Bank,Knee Cross, Rücken, Nacken	Die Tote vom Mont-Sain-Michel	 
+6115	16.05.2024	Glas Zitronensaft,Zahnarzt Huber	 	Die Tote vom Mont-Sain-Michel	 
+6116	17.05.2024	Glas Zitronensaft, Schwitzbad	Ergometer 40 Min, Bank, Knee Cross	Die Tote vom Mont-Sain-Michel	 
+6117	18.05.2024	Glas Zitronensaft, Schwitzbad, FLHTKL fahren Waldkraiburg	Ergometer 51 Min, Bank, Knee Cross, Rücken, Nacken	Die Tote vom Mont-Sain-Michel	 
+6118	19.05.2024	Glas Zitronensaft, Schwitzbad	Ergometer 55 Min, Cross Knee	Nichts als Staub	 
+6119	20.05.2024	Glas Zitronensaft, FLHTKL fahren Mittenwald 	 	Nichts als Staub	 
+6120	21.05.2024	Glas Zitronensaft, Eishockey D vs F	Ergometer 40 Min	Nichts als Staub, Die Leere der Nacht	 
+6121	22.05.2024	Glas Zitronensaft, 	Ergometer 46 MIn	Die Leere der Nacht	 
+6122	23.05.2024	Glas Zitronensaft, Schwitzbad, Eishockey D vs CH	Bank, Knee Cross, Nacken, Ergometer 50 Min	Die Leere der Nacht	 
+6123	25.05.2024	Glas Zitronensaft, Schwitzbad, Italienisch essen	Ergometer 55 Min	Die Leere der Nacht, Blutschlucht	 
+6135	05.06.2024	Glas Zitronensaft	Laufen Köln Rhein	Das Grab in der Ardeche	 
+6138	08.06.2024	Glas Zitronensaft, Köln Stadt	Laufen Köln Rhein 	Das Grab in der Ardeche	 
+6128	30.05.2024	Glas Zitronensaft, Schwitzbad	Ergometer 50 Min, Bank, Knee Cross, Rücken, Nacken	Verkommenes Blut, Das Grab in der Ardeche	 
+6127	29.05.2024	Glas Zitronensaft	Ergomete 45 Min	Verkommenes Blut	 
+6137	07.06.2024	Glas Zitronensaft	Laufen Köln Rhein	Das Grab in der Ardeche	 
+6125	27.05.2024	Glas Zitronensaft	Ergometer 32 Min	Verkommenes Blut	 
+6124	26.05.2024	Glas Zitronensaft, VRSCDX fahren	Ergometer 51 Min	Blutschlucht, Verkommenes Blut	 
+6126	28.05.2024	Glas Zitronensaft, Schwitzbad	Bank, Knee Cross, Rücken, Nacken, Ergometer 36 Min	Verkommenes Blut	 
+6129	31.05.2024	Glas Zitronensaft	Ergometer 23 Min	Das Grab in der Ardeche	 
+6131	02.06.2024	Glas Zitronensaft	Laufen Köln Rhein	Das Grab in der Ardeche	 
+6136	06.06.2024	Glas Zitronensaft	Laufen Köln Rhein	Das Grab in der Ardeche	 
+6130	01.06.2024	Glas Zitronensaft, Erding nach Köln gefahren	 	 	 
+6139	09.06.2024	Glas Zitronensaft, Köln nach Erding gefahren	 	 	 
+6140	10.06.2024	Glas Zitronensaft, Schwitzbad	Bank, Knee Cross, Rücken, Nacken, Laufen Kronthaler Weiher	Mord in der Unterwelt	 
+6141	11.06.2024	Glas Zitronensaft	Laufen Kronthaler Weiher	Mord in der Unterwelt 	 
+6142	12.06.2024	Glas Zitronensaft, Roseline Brille Apollo, AC/DC Konzert München	Laufen Kronthaler Weiher	 	 
+6143	13.06.2024	Glas Zitronensaft, Tutzing Anwalt	 	Mord in der Unterwelt	 
+6144	14.06.2024	Glas Zitronensaft, Mühldorf, Grünbach Biergarten Spare Ribs	Laufen Kronthaler Weiher, Nacken, Rücken	Mord in der Unterwelt	 
+6145	15.06.2024	Glas Zitronensaft, Satzinger telefoniert	Laufen Kronthaler Weiher, Nacken, Rücken	Mord in der Unterwelt	 
+6146	16.06.2024	Glas Zitronensaft, FLHTKL fahren	Laufen Pretzen Nacken, Rücken	Mord in der Unterwelt	 
+6147	17.06.2024	Glas Zitronensaft	Laufen Kronthaler Weiher, Nacken, Rücken	Mord in der Unterwelt	 
+6148	18.06.2024	Glas Zitronensaft, Frostners essen	Ergometer 35 Min, Bank	Mord in der Unterwelt, In ewiger Freundschft	 
+6149	19.06.2024	Glas Zitronensaft	laufen, Nacken	In ewiger Freundschaft, Das RAF Phantom	 
+6150	20.06.2024	Glas Zitronensaft	laufen, Nacken	In ewiger Feundschaft	 
+6151	21.06.2024	Glas Zitronensaft		In ewiger Freundschaft	 
+6152	22.06.2024	Glas Zitronensaft, Köln fahren mit Anhänger	 	 	 
+6153	23.06.2024	Glas Zitronensaft	Nacken, Laufen Köln Rhein	In ewiger Freundschaft	 
+6154	24.06.2024	Glas Zitronensaft	 	In ewiger Freundschaft	 
+6155	25.06.2024	Glas Zitronensaft, Büro Köln Porz	 	 	 
+6156	26.06.2024	Glas Zitronensaft	 	Der Angst verfallen	 
+6157	27.06.2024	Glas Zitronensaft	 	Der Angst verfallen	 
+6158	28.06.2024	Glas Zitronensaft	 	Der Angst verfallen	 
+6159	29.06.2024	Glas Zitronensaft	Laufen Köln Rhein, Nacken	Der Angst verfallen	 
+6160	30.06.2024	Glas Zitronensaft	Laufen Köln Rhein	Der Angst verfallen	 
+6161	01.07.2024	Glas Zitronensaft, Köln – FFM OKR	 	Der Angst verallen	 
+6162	02.07.2024	Glas Zitronensaft	 	Der Angst verfallen, Die Tote auf dem Zöllnerweg	 
+6163	03.07.2024	Glas Zitronensaft	 Die	Tote	auf
+6164	04.07.2024	Glas Zitronensaft	 	Die Tote auf dem Zöllnerweg	 
+6165	05.07.2024	Köln nach Hohenstein-Ernstthal	 	 	 
+6166	06.07.2024	Hohenstein-Ernstthal nach Erding	 	 	 
+6167	07.07.2024	Glas Zitronensaft	 	Die Tote auf dem Zöllnerweg	 
+6168	08.07.2024	Glas Zitronensaft, GIT Schulung	 	Die Tote auf dem Zöllnerweg	 
+6169	09.07.2024	Glas Zitronensaft, GIT Schulung	Bank, Knee Cross, Nacken, Rücken	Dem Tod verfallen	 
+6170	10.07.2024	Glas Zitronensaft	 	Dem Tod verfallen	 
+6171	11.07.2024	Glas Zitronensaft, VRSCDX fahren	Bank, Knee Cross, Nacken, Rücken	Dem Tod verfallen	 
+6172	12.07.2024	Glas Zitronensaft	 	Dem Tod verfallen	 
+6173	13.07.2024	Glas Zitronensaft, FLHTKL fahren	Dem Tod verfallen	 	 
+6174	14.07.2024	Glas Zitronensaft, FLHTKL fahren	 	Die Tote von Saint-Malo	 
+6175	15.07.2024	Glas Zitronensaft, MacBook Pro M3 geliefert	Bank, Knee Cross, Nacken,	 	 
+6176	16.07.2024	Glas Zitronensaft, Horizont HOT, FLSTFI fahren 	 	 	 
+6177	17.07.2024	Glas Zitronensaft, Roseline iphone 12	 	Die Tote von Saint-Malo	 
+6178	18.07.2024	Glas Zitronensaft	Bank, Knee Cross, Nacken, Rücken	Die Tote von Saint-Malo	 
+6179	19.07.2024	Glas Zitronensaft, FLSTFI fahren	 	Die Tote von Saint-Malo	 
+6181	21.07.2024	Glas Zitronensaft, FLHTKL fahren, Dostojewski	Bank, Knee Cross, Nacken, Rücken	Die Tote von Saint-Malo	 
+6182	22.07.2024	Glas Zitronensaft	Bank, Knee Cross, Nacken, Rücken	Die Tote von Saint-Malo	 
+6183	23.07.2024	Glas Zitronensaft	Bank, Knee Cross, Nacken, Rücken	Die Tote von Saint-Malo	 
+6184	24.07.2024	Glas Zitronensaft	Bank	Die Tote von Saint-Malo	 
+6185	25.07.2024	Glas Zitronensaft	Bank, Knee Cross, Nacken, Rücken	Die Tote von Saint-Malo	 
+6186	26.07.2024	Glas Zitronensaft, FLHTKL fahren	Bank, Knee Cross, Nacken	Die Tote von Saint-Malo	 
+6187	27.07.2024	Glas Zitronensaft, FLHTKL putzen, FLHTKL fahren Schliersee	 	 	 
+6188	29.07.2024	Glas Zitronensaft	Bank, Knee Cross, Nacken, Rücken	Commissaire Finot lässt nicht locker	 
+6189	30.07.2024	Glas Zitronensaft	Bank, Knee Cross, Nacken, Rücken	Commissaire Finot lässt nicht locker	 
+6191	01.08.2024	Glas Zitronensaft	Bank, Knee Cross, Nacken, Rücken	Commissaire Finot lässt nicht locker	 
+6192	02.08.2024	Glas Zitronensaft	Bank	 	 
+6193	03.08.2024	Glas Zitronensaft, Erding nach Wenns über Kühtai	 	 	 
+6194	04.08.2024	Kaunertal, Acla da fans in CH 	 	 	 
+6195	05.08.2024	Nach Bormio über Stilfser Joch/Stelvio Pass	 	 	 
+6197	07.08.2024	von Fondo nach Rocca Petro über Pordoi Pass	 	 	 
+6199	09.08.2024	Von Innsbruck nach Erding	 	 	 
+6198	08.08.2024	Von Rocca Pietore nach Innsbruck über Falzarego und Valparola Pass	 	 	 
+6196	06.08.2024	Von Bormio über Gavia Pass und Passo del Tonale  nach  Fondo	 	 	 
+6201	11.08.2024	Glas Zitronensaft	 	Commissaire Finot lässt nicht locker	 
+6202	12.08.2024	Glas Zitronensaft, VRSCDX fahren	 	Commissaire Finot lässt nicht locker	 
+6203	13.08.2024	Glas Zitronensaft, FLHTKL Schliersee fahren	 	Commissaire Finot lässt nicht locker	 
+6205	15.08.2024	Glas Zitronensaft, FLHTKL fahren, Chiemsee Spare Ribbs	Bank, Knee Cross	Der Tote aus der Bücherstadt	 
+6206	16.08.2024	 	Bank, Knee Cross, Nacken	Der Tote aus der Bücherstadt	 
+6207	17.08.2024	Glas Zitronensaft	Bank, Knee Cross, Nacken, Rücken	Der Tote aus der Bücherstadt	 
+6208	18.08.2024	Glas Zitronensaft	 	Der Tote aus der Bücherstadt	 
+6209	19.08.2024	Glas Zitronensaft	Bank, Knee Cross, Nacken, Rücken	Der Tote aus der Bücherstadt	 
+6210	20.08.2024	Glas Zitronensaft	Bank, Knee Cross, Nacken, Rücken	Der Tote in der Mühle	 
+6211	21.08.2024	Glas Zitronensaft	Bank, Knee Cross, Nacken, Rücken	Der Tote in der Mühle	 
+6212	22.08.2024	Glas Zitronensaft	Bank, Knee Cross,Rücken	Der Tote in der Mühle, Die Tote am Strand	 
+6213	23.08.2024	Glas Zitronensaft	Bank, Knee Cross, Nacken, Rücken	Die Tote am Strand	 
+6214	24.08.2024	Glas Zitronensaft	 	Die Tote am Strand, Der Tote in der Burg	 
+6215	25.08.2024	Glas Zitronensaft	Bank, Knee Cross, Nacken, Rücken	Der Tote in der Burg	 
+6216	26.08.2024	Glas Zitronensaft	Bank	Der Tote in der Burg	 
+6217	27.08.2024	Glas Zitronensaft, Landratsamt Roseline Ausweis Antrag	 	Der Tote in der Burg	 
+6218	28.08.2024	Glas Zitronensaft	Bank, Knee Cross, Nacken, Rücken	Der Tote in der Burg, Kleine Schwester	 
+6219	29.08.2024	Glas Zitronensaft	Bank, Knee Cross,Rücken	Kleine Schwester	 
+6220	30.08.2024	Glas Zitronensaft	Bank, Knee Cross, Nacken, Rücken	 	 
+6221	31.08.2024	Glas Zitronensaft, FLHTKL fahren, rauchfrei	 	 	 
+6222	01.09.2024	Glas Zitronensaft, rauchfrei	Bank, Knee Cross, Nacken, Rücken	 	 
+6223	02.09.2024	FFM fahren, rauchfrei	 	 	 
+6204	14.08.2024	Glas Zitronensaft, Kronthaler Weiher	  	Commissaire Finot lässt nicht locker	lässt
+6180	20.07.2024	Glas Zitonensaft, FLSTFI fahren, Kronthaler Weiher, Kindle Scribe	 	Die Tote von Saint-Malo	 
+6224	03.09.2024	Glas Zitronensaft, rauchfrei	Bank	Die Spur der Finger	 
+6225	04.09.2024	Darmspiegelung, Longmire, rauchfrei	 	 	 
+6226	05.09.2024	Glas Zitronensaft, rauchfrei, Prison Break	Bank	Die Spur der Finger	 
+6229	08.09.2024	Glas Zitronensaft, rauchfrei	Bank, Cross Knee, Nacken, Rücken	 	 
+6228	07.09.2024	Glas Zitronensaft, FHTKL fahren Passau, Schärding, rauchfrei	  	 	 
+6227	06.09.2024	Glas Zitronensaft, rauchfrei	Bank, Cross Knee 	 	 
+6230	09.09.2024	Glas Zitronensaft, rauchfrei	Bank, Cross Knee, Nacken, Rücken	Die Spur der Finger	 
+6231	10.09.2024	Glas Zitronensaft, Kino Erding Horizon	Bank, Cross Knee, Nacken, Rücken	 	 
+6232	11.09.2024	Glas Zitronensaft, 12 Tage rauchfrei	 	 	 
+6233	12.09.2024	Glas Zitronsensaft, 13 Tage rauchfrei, Longmire letzte Folge 	Bank, Cross Knee, Rücken	Die Spur der Finger	 
+6234	13.09.2024	Salzburg fahren	 	 	 
+6235	14.09.2024	Salzburg, Dauerregen	 	 	 
+6236	15.09.2024	Salzburg nach Erding fahren, Griechisch essen Erding	 	Der Sturm	 
+6237	16.09.2024	Glas Zitronensaft	Bank, Cross Knee, Rücken	 	 
+6239	18.09.2024	Glas Zitronensaft	Bank, Cross Knee, Nacken, Rücken	Der Sturm	 
+6240	19.09.2024	Glas Zitronensaft, FLHTKL fahren	Bank, Cross Knee, Nacken, Rücken	 	 
+6241	20.09.2024	Glas Zitronensaft	Bank, Nacken, Rücken	Der Sturm	 
+6242	21.09.2024	Glas Zitronensaft, FLHTKL fahren	 	 	 
+6243	22.09.2024	Glas Zitronensaft, FLHTKL fahren	Bank, Cross Knee, Nacken, Rücken	 	 
+6238	17.09.2024	Glas Zitronensaft, 18 Tage rauchfrei	 	Der Sturm	 
+6244	23.09.2024	Glas Zitronensaft, 24 Tage rauchfrei, VRSCDX HadEck	Bank, Rücken	 	 
+6245	24.09.2024	Kino Die Fotografin	Bank, Rücken	 Der	Sturm 
+6246	25.09.2024	Glas Zitronensaft	Bank, Rücken, Nacken	 	 
+6247	26.09.2024	Control-M Innovation Roadshow MUC, Anhänger gekauft	 	 	 
+6249	28.09.2024	 	 	 	 
+6290	07.11.2024	FTG WhatsApp	 	Straight Shot	 
+6250	29.09.2024	Hohenstein-Ernstthal FLHTKL nach Erding fahren	 	 	 
+6248	27.09.2024	Glas Zitronensaft, Glas Zitronensaft Hohenstein-Ernstthal FLHTKL fahren, starker regen	Bank, Nacken, Rücken	 	 
+6251	30.09.2024	Glas Zitronensaft, 30 Tage rauchfrei	Bank, Nacken, Rücken	 	 
+6252	01.10.2024	Glas Zitronensaft	Bank, Nacken, Rücken	 	 
+6253	02.10.2024	Glas Zitronensaft, Anhänger abgeholt, Eishockey LA vs Weiden	Bank, Nacken, Rücken	 	 
+6254	03.10.2024	Glas Zitronensaft, Anhänger VIB gebracht	Bank, Nacken, Rücken	Der Sturm	 
+6255	04.10.2024	Glas Zitronensaft, Eishockey LA vs Kaufbeuren	Bank, Nacken, Rücken	Der Sturm	 
+6256	05.10.2024	 Glas Zitronensaft, Zug München fahren	Bank, Nacken, Rücken	 	 
+6257	06.10.2024	Glas Zitronensaft, Eishockey RO vs Bad Nauheim	 	 	 
+6259	08.10.2024	Glas Zitronensaft, Anhänger ummelden	 	Der Sturm	 
+6261	10.10.2024	Schwitzbad, Baden, Massage, Spider Murphy Tickets gekauft, Flora Fotos gesendet	 	Der Sturm	Weniger negativ sein und nicht mehr nörgeln
+6260	09.10.2024	Schwitzbad, WhatsApp Flora und Fotos bekommen	 	Der Sturm 	 
+6262	11.10.2024	Glas Zitronensaft	 	Der Sturm	 
+6263	12.10.2024	Glas Zitronensaft, Schwitzbad, FS gefahren, Kaffee Ihle ED	 	Der Tausch	 
+6264	13.10.2024	Glas Zitronensaft, Schwitzbad	 	 	 
+6265	14.10.2024	ED – FFM -ED gefahren, OKR mtg	 	 	 
+6267	16.10.2024	Schwitzbad, Erkältung, Husten in der Nacht	 	 	 
+6266	15.10.2024	Schwitzbad, Erkältung, Husten in der Nacht	 	Der Tausch	 
+6268	17.10.2024	Roseline verletzende Aussage	 	Der Tausch	 
+6258	07.10.2024	Glas Zitronensaft, 37 Tage rauchfrei, Roseline Anmeldung Integrationskurs	Bank, Nacken, Rücken	 	 
+6269	18.10.2024	48 Tage rauchfrei	 	Der Tausch	 
+6270	19.10.2024	Schwitzbad, LA fahren C&A	Bank, Nacken, Rücken	 	 
+6271	20.10.2024	Schwitzbad, Kochen Forstners	Bank, Nacken, Rücken	Blutsbrüder	 
+6272	21.10.2024	Glas Zitronensaft	Bank, Nacken, Rücken	 	 
+6273	22.10.2024	RAV Winterreifen und Ladekabel, BOB Bayrischzell	 	Blutsbrüder	 
+6274	23.10.2024	Glas Zitronensaft, email CB und US, Prison Break letze Folge	 	Im tiefsten Winter	 
+6275	24.10.2024	Glas Zitronensaft	Bank, Nacken, Rücken	Im tiefsten Winter, Knockout	 
+6276	25.10.2024	Glas Zitronensaft, Schwitzbad, LA vs Lausitz, 55 Tage rauchfrei	Bank, Nacken, Rücken	 	 
+6278	26.10.2024	Glas Zitronensaft, RAV an Ladestation, laden geht sehr langsam	Bank, Nacken, Rücken	Knockout	 
+6279	27.10.2024	Glas Zitronensaft, Fabi Fussball, Dostojewski Flammkuchen, RAV Ladestation, ED vs Waldkraiburg	 	 	 
+6280	28.10.2024	Glas Zitronensaft, FTG WhatsApp und Liebe gestanden	 	 	 
+6281	29.10.2024	Glas Zitronensaft, Schwitzbad, Stadtpark spazieren	Bank, Nacken, Rücken – Rücken schmerzen	Knockout	 
+6282	30.10.2024	Glas Zitronensaft, FLHTKL putzen, FLSTFI fahren	 	Knockout	 
+6283	31.10.2024	Bahn Muc - Tegernsee, Bräuhaus Tegernsee	 	 	 
+6284	01.11.2024	Glas Zitronensaft, ED - Klostersee	Bank, Nacken, Rücken – Rücken schmerzen	Knockout, Straight Shot	 
+6285	02.11.2024	Glas Zitronensaft	Rücken	Straight Shot	 
+6286	03.11.2024	Glas Zitronensaft	 	Straight Shot	 
+6287	04.11.2024	Schwitzbad, Erkältung	 	Straight Shot	 
+6288	05.11.2024	Erkältung	 	 	 
+6289	06.11.2024	FTG telefoniert, neuer TV	 	 	 
+6291	08.11.2024	Glas Zitronensaft 	 	 	 
+6292	09.11.2024	 	 	 	 
+6293	10.11.2024	Eishockey ED vs DGF	 	Straight Shot	 
+6294	12.11.2024	Glas Zitronensaft	 	 	 
+6295	12.11.2024	Glas Zitronensaft	Rücken	 	 
+6296	13.11.2024	Glas Zitronensaft	 	Straight Shot	 
+6297	14.11.2024	Glas Zitronensaft	Rücken	Straight Shot	 
+6299	16.11.2024	Glas Zitronensaft, Mammendorf, PWAWI migration	 	Straight Shot	 
+6300	17.11.2024	Glas Zitronensaft, Gospel Life Center Feldkirchen, LA vs Kassel	 	 	 
+6301	18.11.2024	Glas Zitronensaft	 	 	 
+6302	19.11.2024	Glas Zitronensaft, Flora WhatsApp, 80 Tage rauchfrei	Bank, Nacken, Rücken	Skorpion	 
+6303	20.11.2024	Glas Zitronensaft	Bank, Nacken, Rücken	Skorpion	 
+6304	21.11.2024	Glas Zitronensaft, Zahnreinigung, Rufbereitschaft PWAWI	Bank, Nacken, Rücken	Die Schuld, die man trägt	 
+6298	15.11.2024	Glas Zitronensaft, Ed vs Schweinfurt	 	Straight Shot	 
+6305	22.11.2024	Glas Zitronensaft	Bank, Nacken, Rücken	 	 
+6306	23.11.2024	Glas Zitronensaft, PBRMSAP migration, Eishockey Chicago vs Philadelphia	 	Die Schuld, die man trägt	 
+6307	24.11.2024	Church, McDonalds, ChatGPT lernen zu nutzen, ED vs Peissenberg	 	 	 
+6308	25.11.2024	Glas Zitronensaft	 	 	 
+6309	26.11.2024	Glas Zitronensaft, Remote Agent script	 	 	 
+6310	27.11.2024	Glas Zitronensaft, FTG konnte niucht telefonieren, schade	Bank, Nacken, Rücken	 	 
+6311	28.11.2024	Glas Zitronensaft, FLHTKL HaD-Eck bringen	 	Die Schuld, die man trägt	 
+6312	29.11.2024	GGlas Zitronensaft, Müll entsorgen Wurzer und Reyclinghof Batterie, Ed vs Landsberg	 	 	 
+6313	30.11.2024	Glas Zitronensaft	Bank, Nacken, Rücken	Die Schuld, die man trägt	 So wie du gekommen bist wirst du die Erde wieder verlassen. Es macht keine Sinn Dinge anzuhäufen
+6314	02.12.2024	Glas Zitronensaft, aufhören Dinge anzuhäufen, 93 Tage rauchfrei	 	Die Schuld, die man trägt	 
+6315	03.12.2024	Glas Zitronensaft, nichts besonders	 	Die Schuld, die man trägt	 
+6316	04.12.2024	Glas Zitronensaft, FTG telefoniert, Schuhe kaufen	 	 	 
+6317	05.12.2024	Glas Zitronensaft, Tollwood Winterfestival	 	 	 
+6318	06.12.2024	Glas Zitronensaft, LA – Dresden	Bank, Nacken, Rücken	Die Schuld, die man trägt	 
+6319	07.12.2024	Glas Zitronensaft, Schloß Schleißheim	 	 	 
+6320	08.12.2024	Glas Zitronensaft, Church	 	 	 
+6321	09.12.2024	Glas Zitronensaft	Bank, Nacken, Rücken	Die Schuld, die man trägt	 
+6322	10.12.2024	Glas Zitronensaft, FTG Whatsapp	Bank, Nacken, Rücken	 	 
+6323	11.12.2024	Glas Zitronensaft	Bank, Nacken, Rücken	Die Schuld, die man trägt	 
+6324	12.12.2024	Glas Zitronensaft, FTG Whatsapp, Java programmieren	Bank, Nacken, Rücken	Die Schuld, die man trägt	 
+6325	13.12.2024	Glas Zitronsensaft, FLHTKL holen und FLSTFI bringen Had-Eck	 	Die Schuld, die man trägt	 
+6326	14.12.2024	Glas Zitronensaft	Bank, Nacken, Rücken	Die Schuld, die man trägt	 
+6327	15.12.2024	Glas Zitronensaft, Church, ED vs Geretsried	 	Ground Zero	 
+6328	16.12.2024	Glas Zitronensaft, 107 Tage rauchfrei	Bank, Nacken, Rücken	 	 
+6329	17.12.2024	Glas Zitronensaft, FTG Whatsapp, Trigema Parsdorf	 	Ground Zero	 
+6330	18.12.2024	Glas Zitronensaft	Bank, Nacken, Rücken	Ground Zero	 
+6331	19.12.2024	Glas Zitronensaft, ChatGPT Java	Bank, Nacken, Rücken	 	 
+6332	20.12.2024	Glas Zitronensaft	Bank, Nacken, Rücken	 	 
+6333	21.12.2024	Glas Zitronensaft, Wasserburg Weihnachtsmarkt	Bank, Nacken, Rücken	 	 
+6334	22.12.2024	Glas Zitronensaft, Church	 	Ground Zero, Wer wir sind	 
+6335	23.12.2024	Glas Zitronensaft	Bank, Nacken, Rücken	 	 
+6336	24.12.2024	Forstnes Frühstücken in Dorfen, Whatsapp FTG	 	 	 
+6337	25.12.2024	Glas Zitronensaft	Bank, Nacken, Rücken	Ein Grund zum Töten, Wer wir sind	 
+6338	26.12.2024	Glas Zitronensaft	Bank, Nacken, Rücken	Ein Grund zum Töten	Ein Grund zum Töten.Wer wir sind
+6339	27.12.2024	Glas Zitronensaft	Rücken	Ein Grund zum Töten	 
+6340	28.12.2024	Glas Zitronensaft	 	Ein Grund zum Töten	 
+6341	29.12.2024	Glas Zitronensaft, Eishockey ED vs Kempten	 	 	 
+6342	30.12.2024	Glas Zitronensaft	 	Without Measure	 
+6343	31.12.2024	Glas Zitronensaft, Flugtickets Dubai	 	Without Measure	 
+6344	01.01.2025	Glas Zitronensaft Tickets und Unterkunft Dubai	 	Without Measure	 
+6345	02.01.2025	Glas Zitronensaft, keine Visum für VAE für Uganda	 	Without Measure	 
+6347	04.01.2025	Glas Zitronensaft	Bank, Nacken, Rücken	Without Measure	 
+6346	03.01.2025	Glas Zitronensaft. RO vs Bad Nauheim	 	 	 
+6348	05.01.2025	Glas Zitronensaft, LA vs Kaufbeuren, FTG Whatsapp	Bank, Nacken, Rücken	 	 
+6349	06.01.2025	Glas Zitronensaft	 	 	 
+6380	06.02.2025	Glas Zitronensaft	Bank	 	 
+6381	07.02.2025	Glas Zitronensaft	Bank	 	 
+6351	08.01.2025	Glas Zitronensaft, Western Union,Whatsapp Alina	 	Breacher	 
+6350	07.01.2025	Glas Zitronensaft, REWE Eching Notebook, Western Union, Pfeife rauchen, Whatsapp Alina	 	Breacher	 
+6352	09.01.2025	Glas Zitronensaft, Whatsapp Alina	Bank, Nacken, Rücken	Breacher	 
+6353	10.01.2025	Glas Zitronensaft, Roseline Visum Dubai	Bank, Nacken, Rücken	 	 
+6354	11.01.2025	Glas Zitronensaft	 	 	 
+6355	12.01.2025	Glas Zitronensaft, Church	 	 	 
+6356	13.01.2025	OKR Frankfurt	 	 	 
+6357	14.01.2025	Glas Zitronensaft, iphone 15 plus	 	 	 
+6358	15.01.2025	Glas Zitronensaft	 	Breacher	 
+6359	16.01.2025	Glas Zitronensaft, Gospel Singers MB	Bank, Nacken, Rücken	 	 
+6360	17.01.2025	Glas Zitronensaft	Bank, Nacken, Rücken	 	 
+6361	18.01.2025	Glas Zitronensaft, Prien Chiemsee, Schloss Herrenchiemsee	 	 	 
+6362	19.01.2025	Glas Zitronensaft, LA vs Weiden	 	 	 
+6363	20.01.2025	Glas Zitronensaft	Bank, Nacken, Rücken	 	 
+6364	21.01.2025	Glas Zitronensaft	 	 	 
+6365	22.01.2025	Glas Zitronensaft	 	Breacher	 
+6366	23.01.2025	Glas Zitronensaft	Bank, Nacken, Rücken	Breacher	 
+6367	24.01.2025	Glas Zitronensaft, Mühldorf, MV Whatsapp	Bank, Nacken, Rücken	 	 
+6368	25.01.2025	Glas Zitronensaft, Church	 	Breacher	 
+6369	26.01.2025	Glas Zitronensaft	Bank, Nacken, Rücken	 	 
+6370	28.01.2025	Glas Zitronensaft	Bank, Nacken, Rücken	 	 
+6371	29.01.2025	Glas Zitronensaft	Bank	 	 
+6372	30.01.2025	Glas Zitronensaft	Bank	 	 
+6373	31.01.2025	Glas Zitronensaft	Bank, Nacken, Rücken	 	 
+6374	01.02.2025	Glas Zitronensaft, Burghausen	 	 	 
+6375	02.02.2025	Glas Zitronensaft	 	Breacher	 
+6376	02.02.2025	Glas Zitronensaft	 	Breacher	 
+6377	03.02.2025	Glas Zitronensaft, WhatsApp TS	 	 	 
+6378	04.02.2025	Glas Zitronensaft	Bank, Nacken, Rücken	 	 
+6379	05.02.2025	Glas Zitronensaft, Bewerbung FIL	Bank	 	 
+6382	08.02.2025	ED nach Hohenstein, Sandra Umzug, groteskes verhalten, nach Köln gefahren, Airport Hotel Köln	 	 	 
+6383	09.02.2025	Döner essen Wiener Platz	 	 	 
+6385	11.02.2025	Büro Köln, Bereichsmeeting, Restaurant Porzer Wirtshaus	 	 	 
+6386	12.02.2025	Büro Köln, Hähnchen essen Wiener Platz	 	 	 
+6387	13.02.2025	Köln Büro, WAP meeting, McDonalds	 	 	 
+6388	14.02.2025	Köln Büro, Interview Fidelity FFB, Hähnchen essen Wiener Platz	 	 	 
+6389	15.02.2025	Köln nach Erding	 	 	 
+6384	10.02.2025	Büro Köln	 	 	 
+6390	16.02.2025	Glas Zitronensaft, Fidelity Absage	 	 	 
+6391	17.02.2025	Glas Zitronensaft, Checkin Dubai	 	 	 
+6392	18.02.2025	Glas Zitronensaft, Checkin Dubai	Bank, Nacken	 	 
+6393	19.02.2025	Glas Zitronensaft	Bank, Nacken	 	 
+6394	20.02.2025	Glas Orangensaft, Whatsapp Tanja	Bank, Nacken	 	 
+6395	21.02.2025	Glas Orangensaft	 	 	 
+6396	22.02.2025	Glas Orangensaft	Bank, Nacken	 	 
+6397	23.02.2025	Glas Orangensaft, Church, Eishockey ED vs Landsberg	 	 	 
+6398	24.02.2025	nach Dubai über Istanbul geflogen	 	 	 
+6399	25.02.2025	Dubai	 	 	 
+6400	26.02.2025	Dubai	 	 	 
+6401	27.02.2025	Dubai	 	 	 
+6402	28.02.2025	Dubai	 	 	 
+6403	01.03.2025	Dubai	 	 	 
+6404	02.03.2025	Dubai	 	 	 
+6405	03.03.2025	Von Dubai nach München über Istanbul	 	 	 
+6406	04.03.2025	 	 	 	 
+6407	05.03.2025	 	 	 	 
+6408	06.03.2025	VRSCDX Had-Eck wg Bremsen, Whatsapp FTG	Bank, Nacken	 	 
+6409	07.03.2025	Glas Zitronensaft	Bank	 	 
+6410	08.03.2025	Glas Zitronensaft, FLHTKL fahren	Bank	 	 
+6411	09.03.2025	Glas Zitronensaft, FLHTKL fahren	Bank	Kubernetes	 
+6412	10.03.2025	Glas Zitronensaft, Rosi Putzstelle	 	Kubernetes	 
+6413	11.03.2025	Glas Zitronensaft	 	 	 
+6414	12.03.2025	Glas Zitronensaft	Bank, Nacken	 	 
+6415	13.03.2025	Glas Zitronensaft	Bank	 	 
+6416	14.03.2025	Glas Zitronensaft	 	Reacher	 
+6417	15.03.2025	Glas Zitronensaft	 	 	 
+6418	16.03.2025	Glas Zitronensaft	Bank, Nacken	 	 
+6419	17.03.2025	Glas Zitronensaft, PA beantragen	Bank, Nacken	 	 
+6420	18.03.2025	BMC Tec Day FFM	 	 	 
+6421	19.03.2025	Glas Zitronensaft, FLSTFI fahren 	Bank, Nacken	 	 
+6422	20.03.2025	Glas Zitronensaft	Bank, Nacken	 	 
+6423	21.03.2025	Glas Zitronensaft	 	 	 
+6424	22.03.2025	Glas Zitronensaft, FLHTKL Schliersee fahren	Bank, Nacken	 	 
+6425	23.03.2025	Glas Zitronensaft	 	Reacher, Kubernetes	 
+6426	24.03.2025	Glas Orangensaft, FTG email	 	Name not given, Kubernetes	 
+6429	27.03.2025	Glas Zitronensaft, VRSCDX holen	 	 	 
+6428	26.03.2025	Glas Zitronensaft, Dell Notebook Ubuntu installiert	 	 	 
+6427	25.03.2025	Glas Wasser	Bank, Nacken	Name not given, Kubernetes	 
+6430	28.03.2025	Glas Zitronensaft, FLHTKL HU, VRSCDX fahren	 	 	 
+6431	29.03.2025	Glas Zitronensaft, DELL Ubuntu install Docker, Kubernetes	Bank, Nacken	Name not given	 
+6432	30.03.2025	Glas Zitronensaft	Bank, Nacken	Name not given	Name not given, Kubernetes
+6433	31.03.2025	RAV Service und Reifenwechsel	 	 	 
+6434	01.04.2025	Glas Zitronensaft	Bank, Nacken	Impact	 
+6435	01.04.2025	Glas Zitronensaft, Kubernetes GCP	 	 	 
+6436	02.04.2025	Glas Zitronensaft, Kubernetes GCP	 	 	 
+6437	03.04.2025	Glas Zitronensaft, Kubernetes GCP	 	 	 
+6438	04.04.2025	Glas Wasser, Kubernetes GCP, VRSCDX fahren	Bank, Nacken	 	 
+6439	05.04.2025	Glas Wasser, FLHTKL Straubing	 	 	 
+6440	06.04.2025	Glas Wasser	Bank, Nacken	 	 
+6441	07.04.2025	Glas Wasser	Bank, Nacken	 	 
+6442	08.04.2025	OKR FFM	 	Impact	 
+6443	09.04.2025	Glas Wasser	 	 	 
+6444	10.04.2025	Glas Zitronensaft	Bank, Nacken	 	 
+6445	11.04.2025	Glas Zitronensaft, FLSTFI fahren	 	 	 
+6446	12.04.2025	Glas Zitronensaft, FLHTKL Mühldorf	Bank, Nacken	 	 
+6447	13.34.2025	Glas Zitronensaft	 	Impact	 
+6448	14.04.2025	Glas Zitronensaft	Bank, Nacken	 	 
+6449	15.04.2025	Glas Zitronensaft	 	 	 
+6450	16.04.2025	Glas Zitronensaft	Bank, Nacken	 	 
+6451	17.04.2025	Glas Zitronensaft	 	Impact	 
+6452	18.04.2025	Glas Zitronensaft, Garage räumen	Bank, Nacken	 	 
+6453	19.04.2025	Glas Zitronensaft, FTG Whatsapp, VRSCDX fahren, Dostojewskij	Bank, Nacken	 	 
+6454	20.04.2025	Glas Orangensaft, Church	 	 	 
+6455	21.04.2025	Glas Orangensaft	Bank, Nacken	 	 
+6456	22.04.2025	Glas Orangensaft, FTG Whatsapp, FLHTKL Vilsbiburg	 	 	 
+6457	23.04.2025	Glas Wasser, Altmetall entsorgt	 	Impact	 
+6458	24.04.2025	Glas Wasser	 	 	 
+6459	25.04.2025	Glas Wasser	 	 	 
+6460	26.04.2025	Glas Wasser, griechisch Essen Forstners	Bank, Nacken	 	 
+6461	27.04.2025	Glas Zitronensaft, Church	 	 	 
+6462	28.04.2025	Glas Zitronensaft	Bank, Nacken	 	 
+6463	29.04.2025	Glas Zitronensaft	 	Impact	 
+6464	30.04.2025	Glas Zitronensaft, FLSTFI fahren, FLHTKL Vib	 	 	 
+6465	01.05.2025	Glas Zitronensaft, FLHTKL fahren, Bad Tölz Indisch essen	 	 	 
+6466	02.05.2025	Glas Zitronensaft	Bank, Nacken	 	 
+6467	03.05.2025	Glas Zitronensaft	Bank, Nacken	Impact	 
+6468	04.05.2025	Glas Zitronensaft, Church	 	 	 
+6469	05.05.2025	Glas Zitronensaft	Bank, Nacken	 	 
+6470	06.05.2025	Glas Wasser, an meinen Zielen gearbeitet, fokussiert bleiben	Bank, Nacken	Hard Candy	 
+6471	07.05.2025	Glas Wasser 	Bank, Nacken	 	 
+6472	08.05.2025	Glas Ingwerwasser	 	 	 
+6473	09.05.2025	Glas Ingwertee	 	 	 
+6474	10.05.2025	Glas Wasser, Immer noch Erkältung	 	 	 
+6475	11.05.2025	Glas Zitronsensaft, Church	 	 	 
+6476	12.05.2025	Glas Zitronensaft, Steuererklärung	 	 	 
+6477	13.05.2025	Glas Zitronensaft	Bank, Nacken	 	 
+6478	14.05.2025	Glas Zitronensaft, PWAWI Remote Host umkonfiguriert	 	Hard Candy	 
+6479	15.05.2025	Glas Zitronensaft	 	 	 
+6480	16.05.2025	Glas Zitronensaft	Bank, Nacken	 	 
+6481	17.05.2025	Glas Zitronensaft, VRSCDX fahren	 	 	 
+6482	18.05.2025	Glas Zitronsensaft, Church	Bank, Nacken	 	 
+6483	19.05.2025	GGlas Orangen-Zitronensaft, Church Hearing God	Bank, Nacken	 	 
+6484	20.05.2025	Glas Orangen-Zitronensaft, Zahnarzt Huber	Bank, Nacken	 	 
+6485	21.05.2025	Glas Zitronensaft, FTG hat mich in Whatsapp blockiert	 	 	 
+6486	22.05.2025	Glas Zitronensaft	 	 	 
+6487	23.05.2025	Glas Orangen-Zitronensaft, EMA Kafka Probleme	Bank, Nacken	 	 
+6488	24.05.2025	Glas Orangen-Zitronensaft, Käsekuchen	 	 	 
+6489	25.05.2025	Glas Orangen-Zitronensaft, Church	Bank, Nacken	 	 
+6490	26.05.2025	Glas Orangen-Zitronensaft	Bank, Nacken	 	 
+6491	27.05.2025	Glas Orangen-Zitronensaft	 	 	 
+6492	28.05.2025	Glas Orangen-Zitronensaft	Bank, Nacken	 	 
+6493	29.05.2025	Glas Orangensaft	 	 	 
+6494	30.05.2025	Glas Orangensaft, FLSTFI fahren	 	 	 
+6495	31.05.2025	Glas Zitronensaft, FLHTKL fahren, Landl, essen Hundham	Bank,Nacken	 	 
+6496	01.06.2025	Glas Zitronensaft, Church	 	 	 
+6497	02.06.2025	Glas Zitronensaft	Bank, Nacken	 	 
+6498	03.06.2025	Glas Zitronensaft	 	 	 
+6499	04.06.2025	Glas Zitronsensaft	Bank, Nacken	 	 
+6500	05.06.2025	Glas Zitronsensaft	Bank, Nacken	 	 
+6501	06.06.2025	Glas Orangen-Zitronensaft, Anhänger TÜV	 	 	 
+6502	07.06.2025	Glas Orangen-Zitronensaft, Schuhe kaufen, CTM Wartung	Bank, Nacken	 	 
+6503	08.06.2025	Glas Orangen-Zitronensaft, Church	Bank, Nacken	 	 
+6504	09.06.2025	Glas Orangen-Zitronensaft, VRSCDX fahren, KFC	Bank, Nacken	 	 
+6505	10.06.2025	Glas Orangen-Zitronensaft	Bank, Nacken	 	 
+6506	11.06.2025	Glas Orangen-Zitronensaft, Rentenberatung	Bank, Nacken	 	 
+6507	12.06.2025	Glas Zitronen-Ingwer Tee		 	 
+6508	13.06.2025	Glas Zitronen-Ingwer Tee, VRSCDX fahren	Bank, Nacken	 	 
+6509	14.06.2025	Glas Zitronen-Ingwer Tee, FLHTKL Mühldorf fahren, Forstner essen Grünbach	Bank, Nacken	 	 
+6510	15.06.2025	Glas Zitronen-Ingwer Tee, Church	 	 	 
+6511	16.06.2025	Glas Zitronen-Ingwer Tee, Church	Bank, Nacken	 	 
+6512	17.06.2025	Glas Zitronen-Ingwer Tee, FLSTFI fahren, FLSBS holen	Bank, Nacken	 	 
+6513	18.06.2025	FFM Markus Abschied 	 	 	 
+6517	22.06.2025	Glas Zitronen-Ingwer Tee, Church	Bank, Nacken	 	 
+6518	23.06.2025	Glas Zitronen-Ingwer Tee, VRSCDX fahren, Bibel Group	 	 	 
+6516	21.06.2025	Glas Zitronen-Ingwer Tee, FLHTKL fahren, Schliersee Milchhäuserl, Bibel Group	Bank, Nacken	 	 
+6515	20.06.2025	Glas Zitronen-Ingwer Tee, FLFBS fahren. Bibel Group	 	 	 
+6514	19.06.2025	Glas Zitronen-Ingwer Tee, FLHTKL  fahren, KFC, Bibel Group	 Bank,	Nacken 	 
+6521	26.06.2025	Glas Zitronen-Ingwer Tee, Phaneroo	 	 	 
+6522	27.06.2025	Glas Zitronen-Ingwer Tee, Stadtpark ED, Bibel Group	Bank, Nacken	 	 
+6520	25.06.2025	Glas Zitronen-Ingwer Tee, VRSCDX fahren, Bibel Group	Bank, Nacken	 	 
+6519	24.06.2025	Glas Zitronen-Ingwer Tee, Horizont Gespräch, Bibel Group	Bank, Nacken	 	 
+6523	28.06.2025	Glas Zitronen-Ingwer Tee, VRSCDX fahren, Bibel Group	 	 	 
+6524	29.06.2025	Glas Zitronen-Ingwer Tee,  Church	Bank, Nacken	 	 
+6526	01.07.2025	Glas Zitronen-Ingwer Tee, Horizont Interview, Bibel Group	 	 	 
+6527	02.07.2025	Glas Zitronen-Ingwer Tee, FLFBS fahren, Bibel Group 	Bank, Nacken	 	 
+6528	03.07.2025	Glas Zitronen-Ingwer Tee, FLSTFI holen VRSCDX HadEck, Phaneroo	Bank, Nacken	 	 
+6529	04.07.2025	Glas Zitronen-Ingwer Tee, FLFBS fahren, Bibel Group	 	 	 
+6525	30.06.2025	Glas Zitronen-Ingwer Tee, VRSCDX fahren, starkes Ruckeln wieder, Bibel Group	Bank, Nacken	 	 
+6530	05.07.2025	Glas Zitronen-Ingwer Tee, FLFBS fahren, KFC, Bibel Group	Bank, Nacken	 	 
+6531	06.07.2025	Glas Zitronen-Ingwer Tee, Hope Church	Bank, Nacken	 	 
+6532	07.07.2025	Glas Zitronen-Ingwer Tee, Bibel Group	Bank, Nacken	 	 
+6533	08.07.2025	OKR FFM	 	 	 
+6534	09.07.2025	Glas Zitronen-Ingwer Tee, Bibel Group	 	 	 
+6535	10.07.2025	Glas Zitronen-Ingwer Tee, Phaneroo	Bank, Nacken	 	 
+6536	11.07.2025	Glas Zitronen-Ingwer Tee, FLFBS fahren, McDonald Dorfen, Bibel Group	Bank, Nacken	 	 
+6537	12.07.2025	Glas Zitronen-Ingwer Tee, FLFBS fahren	 	 	 
+6538	13.07.2025	Glas Zitronen-Ingwer Tee, FLFBS fahren, Baptism, KFC	 	 	 
+6539	14.07.2025	Glas Zitronen-Ingwer Tee, Bibel Group	 	 	 
+6540	15.07.2025	Glas Zitronen-Ingwer Tee, Bibel Group	Bank, Nacken	 	 
+6541	16.07.2025	Glas Zitronen-Ingwer Tee, Bibel Group	Bank, Nacken	 	 
+6542	17.07.2025	Glas Zitronen-Ingwer Tee, Phaneroo	Bank, Nacken	 	 
+6543	18.07.2025	Glas Zitronen-Ingwer Tee, FLFBS fahren,  Bibel Group	Bank, Nacken	 	 
+6544	19.07.2025	Glas Zitronen-Ingwer Tee, FLSTFI fahrenee, Bibel Group	 	 	 
+6545	20.07.2025	Glas Zitronen-Ingwer Tee, Hope Church	Bank, Nacken	 	 
+6546	21.07.2025	Glas Zitronen-Ingwer Tee, Flug und Airbnb Nairobi buchen, Church	Bank, Nacken	 	 
+6557	01.08.2025	Glas Zitronen-Ingwer Tee, MUC HBF, Bibel Group	Bank, Nacken	 	 
+6547	22.07.2025	Glas Zitronen-Ingwer Tee, Käsespätzle, Bibel Group	Bank, Nacken	 	 
+6548	23.07.2025	Glas Zitronen-Ingwer Tee, FLSTFI fahren, Bibel Group	Bank, Nacken	 	 
+6549	24.07.2025	Glas Zitronen-Ingwer Tee, Dostojewskij, Phaneroo	 	Bibel für Dummies	 
+6550	25.07.2025	Glas Zitronen-Ingwer Tee, Bibel Group	Bank, Nacken	 	 
+6551	26.07.2025	Glas Zitronen-Ingwer Tee, Mühldorf, Bibel Group	 	 	 
+6552	27.07.2025	Glas Zitronen-Ingwer Tee, Phaneroo, Church	Bank, Nacken	Bibel für Dummies	 
+6553	28.07.2025	Glas Zitronen-Ingwer Tee, Bibel Group	Bank, Nacken	Bibel für Dummies	 
+6554	29.07.2025	Glas Zitronen-Ingwer Tee, McDonalds, Bibel Group	 	Bibel für Dummies	 
+6555	30.07.2025	Glas Zitronen-Ingwer Tee, FLSTFI fahren, Bibel Group	Bank, Nacken	Bibel für Dummies	 
+6556	31.07.2025	Glas Zitronen-Ingwer Tee, FLSTFI fahren, Phaneroo	Bank, Nacken	Bibel für Dummies	 
+6558	02.08.2025	Glas Zitronen-Ingwer Tee, Schliersee, MB Griechisch essen,Bibel Group	 	 	 
+6559	03.08.2025	Glas Zitronen-Ingwer Tee, Phaneroo, Hope Church	Bank, Nacken	Bibel für Dummies	 
+6560	04.08.2025	Glas Zitronen-Ingwer Tee, Bibel Group	Bank, Nacken	Bibel für Dummies	 
+6561	05.08.2025	Glas Zitronen-Ingwer Tee, FLFBS fahren, Bibel Group	 	Bibel für Dummies	 
+6562	06.08.2025	Glas Zitronen-Ingwer Tee, FLSTFI fahren, Bibel Group	Bank, Nacken	Bibel für Dummies	 
+6563	07.08.2025	Glas Zitronen-Ingwer Tee, FLSTFI fahren, Phaneroo	Bank, Nacken	Bibel für Dummies, Hard Candy	 
+6564	08.08.2025	Glas Zitronen-Ingwer Tee, FLFBS fahren, Bibel Group	 	Hard Candy	 
+6565	09.08.2025	Glas Zitronen-Ingwer Tee, FLFBS fahren	Bank, Nacken	Hard Candy	 
+6566	10.08.2025	Glas Zitronen-Ingwer Tee, Bank,	Nacken,	Hope	Church Hard
+6567	11.08.2025	Glas Zitronen-Ingwer Tee, McDonalds, Bibel Group	Bank, Nacken	Hard Candy, Fluchtplan	 
+6568	12.08.2025	Glas Zitronen-Ingwer Tee, Bibel Group	Bank, Nacken	Ein hübsches Gesicht	 
+6569	13.08.2025	Glas Zitronen-Ingwer Tee, Bibel Group	 	 	 
+6570	14.08.2025	Glas Zitronen-Ingwer Tee, Phaneroo	 	Ein hübsches Gesicht	 
+6571	15.08.2025	Glas Zitronen-Ingwer Tee, FLFBS fahren, Bibel Group	Bank, Nacken	 	 
+6572	16.08.2025	Glas Zitronen-Ingwer Tee, Riem Arkaden, Bibel Group	Bank, Nacken	Ein hübsches Gesicht	 
+6573	17.08.2025	Glas Zitronen-Ingwer Tee, Phaneroo	Bank, Nacken	Ein hübsches Gesicht	 
+6575	19.08.2025	Zitronen-Ingwer Tee, FLFBS fahren, Bibel Group, OKR produktiv, Patch Planung nichts übersehen dürfen	Bank, Nacken	Ein hübsches Gesicht	 
+6577	21.08.2025	Zitronen-Ingwer Tee, Zulassungsstelle, Arbeit produktiv, Phaneroo	 	Berserker	 
+6576	20.08.2025	Zitronen-Ingwer Tee, Bibel Group, Arbeit war erfolgreich, Gebet gestern war fruchtbar	Bank, Nacken	Ein hübsches Gesicht, Berserker	 
+6574	18.08.2025	Glas Zitronen-Ingwer Tee, Bibel Group	Bank, Nacken	Ein hübsches Gesicht	 
+6578	22.08.2025	Zitronen-Ingwer Tee, Arbeit produktiv, ruhig erledigt, Bibel Group	Bank, Nacken	Berserker	 
+6579	23.08.2025	ICE WÜ fahren, Bibel Group	 	Berserker	 
+6580	24.08.2025	Zitronen-Ingwer Tee, Phaneroo, Hope Church	Bank, Nacken	Berserker	 
+6581	25.08.2025	Zitronen-Ingwer Tee, FLFBS fahren, arbeit nicht produktiv, müde, ausgelaugt, Bibel Group,	Bank, Nacken	Berserker 	 
+6582	26.08.2025	Zitronen-Ingwer Tee, Arbeit produktiv, ruhig erledigt, Bibel Group	Bank, Nacken	Berserker	 
+6583	27.08.2025	Zitronen-Ingwer Tee, Arbeit produktiv, ruhig erledigt, FLFBS fahren, Bibel Group	Bank, Nacken	Berserker 	 
+6584	28.08.2025	Zitronen-Ingwer Tee, Phaneroo, arbeit gelassen	Bank, Nacken	Berserker	 
+6585	29.08.2025	Zitronen-Ingwer Tee, FLFBS fahren, arbeit produktiv, Strukturiert, Bibel Group	Bank, Nacken	Blutlande	 
+6586	30.08.2025	Zitronen-Ingwer Tee, Riem Arkaden, entspannter Tag	Bank, Nacken	Blutlande	 
+6587	31.08.2025	Zitronen-Ingwer Tee, Hope Church	 	Blutlande	 
+6588	01.09.2025	Zitronen-Ingwer Tee, produktiver Arbeitstag, Bibel Group	Bank, Nacken	Blutlande	 
+6589	02.09.2025	Zitronen-Ingwer Tee, FLFBS Had-Eck, python Flask erfolgreich, NotebookLM, Bibel Group 	 	Once Quit	 
+6590	03.09.2025	Zitronen-Ingwer Tee, Flask lernen, nicht so ungeduldig, nicht fokusiert, selber denken Bibel Group	Bank, Nacken	Once Quit	 
+6591	04.09.2025	Zitronen-Ingwer Tee, FLSTFI fahren, Flask , Phaneroo, beim Beten die Endsituation sehen	 	Once Quit 	 
+6592	05.09.2025	Zitronen-Ingwer Tee, Flask programmieren, Bibel Group	Once Quit, Lückenbüsser	Bank, Nacken	 
+6593	06.09.2025	Zitronen-Ingwer Tee, FLTFI fahren Mainburg, Bibel Group 	Bank, Nacken	Lückenbüsser	 
+6594	07.09.2025	Zitronen-Ingwer Tee, Phaneroo, Hope Church	 	Lückenbüsser	 
+6595	08.09.2025	Zitronen-Ingwer Tee, Bibel Group, der Tag war gefühlt unproduktiv	Bank, Nacken	 	 
+6596	09.09.2025	Zitronen-Ingwer Tee, arbeit produktiv, ruhig erledigt, Flask Programm, Bibel Group	Bank, Nacken	Lückenbüsser	 
+6597	10.09.2025	Zitronen-Ingwer Tee, Arbeitstag entspannt, Flask Übungen erfolgreich, Bibel Group	Bank, Nacken	Lückenbüsser	 
+6598	11.09.2025	Zitronen-Ingwer Tee, Arbeitstag produktiv, Phaneroo	Bank, Nacken	Lückenbüsser	 
+6599	12.09.2025	Zitronen-Ingwer Tee, ED vs LA, Arbeit ruhig erledigt	Bank, Nacken	Lückenbüsser	 
+6601	14.09.2025	Zitronen-Ingwer Tee, Hope Church	Bank, Nacken	Isarblues	 
+6602	15.09.2025	Zitronen-Ingwer Tee, FLHTKL fahren, Bibel Group	Bank, Nacken	Isarblues 	Arbeit relaxed, wenig los
+6604	16.09.2025	Zitronen-Ingwer Tee, VRSCDX & FLFBS Had-Eck, Bibel Group	Bank, Nacken	Isarblues	Python und SQLite, entspannter Arbeitstag
+6605	17.09.2025	Zitronen-Ingwer Tee, Plot in Uganda, Bibel Group	Bank, Nacken	Isarblues	gelassener werden an der Arbeit
+6606	18.09.2025	Zitronen-Ingwer Tee, VRSCDX fahren, Phaneroo 	Bank, Nacken	Isarblues	nichts aufgeschoben, gibt gutes Gefühl
+6608	20.09.2025	Zitronen-Ingwer Tee, FLHTKL fahren Kufstein, Bibel Group 	 	Das Tal der Wölfe 	 
+6607	19.09.2025	Zitronen-Ingwer Tee, VRSCDX Kleinanzeigen, FLFBS fahren, Bibel Group	Bank, Nacken	Isarblues, Das Tal der Wölfe	keine neue Erkenntnis oder besonderes
+6609	21.09.2025	Zitronen-Ingwer Tee, FLHTKL fahren, Hope Church 	Bank, Nacken 	Das Tal der Wölfe, Die Bergpredigt	 
+6610	22.09.2025	Zitronen-Ingwer Tee, Bibel Group 	Bank, Nacken 	Das Tal der Wölfe, Die Bergpredigt	Zuversicht, Gott vertrauen
+6611	23.09.2025	Zitronen-Ingwer Tee, Bibel Group 	Bank, Nacken 	Das Tal der Wölfe	Gott vertrauen, entspannt
+6612	24.09.2025	Zitronen-Ingwer Tee, Bibel Group 	Bank, Nacken 	Das Tal der Wölfe, Die Bergpredigt	Gott vertrauen, entspannt
+6613	25.09.2025	Zitronen-Ingwer Tee, Phaneroo	Bank, Nacken 	Und Alle Teufel Hier	leider nicht so entspannt
+6614	26.09.2025	Beten, ED vs Riessersee	Bank, Nacken	Und Alle Teufel Hier, Besser denken	Gut gefühlt beim beten
+6615	27.09.2025	Beten, FLHTKL Chiemsee, Bibel Group	Bank, Nacken	Und Alle Teufel Hier, Besser denken	positiv durchflutet am morgen beim beten
+6616	28.09.2025	Beten, FLFBS fahren, Hope Church	Bank, Nacken	Und Alle Teufel Hier, Besser denken, Bergpredigt	fühle mich mehr gelassen
+6617	29.09.2025	Beten, Bibel Group	Bank, Nacken	Und Alle Teufel Hier, Besser denken	 
+6618	30.09.2025	Beten, OKR FFM	 	Und Alle Teufel Hier	 
+6619	01.10.2025	Beten, Bibel Group 	Bank, Nacken	Und Alle Teufel Hier, Besser denken, Der Agent	entspannt bei Problem, Besser denken, Der Agent
+6620	02.10.2025	Beten, Phaneroo	Bank, Nacken	Der Agent	 
+6600	13.09.2025	Hope Church, FLHTKL fahren, Hope Church-sduel, Bibel Group	Bank, Nacken	Lückenbüsser	 
+6621	03.10.2025	Beten, FLFBS fahren, schlechte/keine Gasannahme, Bibel Group	Bank, Nacken	Der Agent, Besser denken	 
+6622	04.10.2025	Beten, FLHTKL fahreni, Bibel Group	Bank, Nacken	Der Tote im Wald von Huelgoat, Besser denken	 
+6659	08.11.2025	Gebet, Bibel Group	Bank, Nacken	Kopfgeld für den Milliardär, Besser denken	Die andere Backe hinhalten. Bildlich gesprochen\nDer Klügere gibt als erster nach.\nBehandle Menschen so, wie du selbst behandelt werden willst. \nTut selber was ihr von anderen erwartet.
+6623	05.10.2025	Beten, Phaneroo, Hope Church & Fellowship 	  	Der Tote im Wald von Huelgoat, Bergpredigt	 
+6624	06.10.2025	Beten, Bibel Group	Bank, Nacken	Der Tote im Wald von Huelgoat	 
+6625	07.10.2025	Beten, Bibel Group	 	Der Tote im Wald von Huelgoat	 
+6631	13.10.2025	Beten, Bibel Group, rauchfrei	Bank, Nacken	Der Machtwechsel, Besser denken	Wenn-dann-Pläne entwicklen um den Schlüsselreiz entgegen wirken, arbeit gelassen bleiben 
+6627	09.10.2025	Beten, Erkältung, Phaneroo, rauchfrei	 	Der Tote im Wald von Huelgoat	 
+6626	08.10.2025	Beten, Erkältung, rauchfrei	 	 	 
+6629	11.10.2025	Beten, MÜ, Bibel Group, rauchfrei	Bank, Nacken	Ein Sauberer Mord	  
+6630	12.10.2025	Beten, Hope Church, rauchfrei	Bank, Nacken	Ein Sauberer Mord, Bergpredigt	  
+6628	10.10.2025	Beten, KFC,  Bibel Group, rauchfrei	Bank, Nacken	Ein Sauberer Mord, Besser denken	Gewohnheiten etablieren – 2 Faktoren 1. Wie einfach lässt sich die Routine in den Alltag integrieren?  2. Und wie konstant bleibt der Schlüsselreiz/Umgebung, in der die Routine ausgeführt wird?  
+6637	17.10.2025	Beten, Bibel Group, rauchfrei	Bank, Nacken	Bragg bis zum Tod	 
+6636	16.10.2025	Beten, Phaneroo, rauchfrei	Bank, Nacken	Bragg bis zum Tod, Besser denken	 
+6660	09.11.2025	Gebet, Phaneroo, Hope Church	Bank, Nacken	Kopfgeld für den Milliardär, Bergpredigt	rauchfrei
+6661	10.11.2025	Gebet, Hope Church		Monster	rauchfrei
+6638	18.10.2025	Beten, Hope Church-sduel, KFC, Bibel Group, rauchfrei	Bank, Nacken	Bragg bis zum Tod	 
+6635	15.10.2025	Beten, VRSCDX fahren, rauchfrei, Bibel Group	Bank, Nacken	Der Machtwechsel 	 
+6634	14.10.2025	Beten, VRSCDX fahren, rauchfrei, Bibel Group	Bank, Nacken	Der Machtwechsel 	 
+6639	19.10.2025	Beten, Phaneroo, Hope Church & Fellowship, rauchfrei	Bank, Nacken	Turm der Vergeltung, Besser denken, Bergpredigt	 
+6641	21.10.2025	Beten, Bibel group	 	Turm der Vergeltung	nicht rauchfrei,
+6640	20.10.2025	Beten	 	Turm der Vergeltung, Besser denken, 	Nicht gut reagiert auf Rosi Vorhaltung, nicht rauchfrei,
+6642	22.10.2025	Beten, Bibel group	Bank, Nacken 	Turm der Vergeltung, Absolute Autorität	nicht rauchfrei 
+6643	23.10.2025	Gebet, Phaneroo	Bank, Nacken 	Absolute Autorität	nicht rauchfrei 
+6644	24.10.2025	Gebet, Bibel Group	Bank, Nacken 	Absolute Autorität, Der Vollstrecker	nicht rauchfrei, ruhig bei der Arbeit, strukturiert 
+6645	25.10.2025	Gebet, Bibel Group	Bank, Nacken 	Der Vollstrecker	nicht rauchfrei
+6646	26.10.2025	Gebet, Phaneroo	Bank, Nacken 	Der Vollstrecker, Besser denken	KI Exam sind gut zum lernen, rauchfrei
+6647	27.10.2025	Gebet, Bibel Group 	Bank, Nacken 	Die Spinne und der Skorpion, Besser denken	rauchfrei
+6648	28.10.2025	Gebet, Bibel Group 	Bank, Nacken 	Die Spinne und der Skorpion	rauchfrei
+6649	29.10.2025	Gebet, Bibel Group	Bank, Nacken 	Die Spinne und der Skorpion	rauchfrei
+6650	30.10.2025	Gebet, Phaneroo	Bank, Nacken 	Die Spinne und der Skorpion	rauchfrei
+6651	31.10.2025	Gebet, Bibel Group	Bank, Nacken	Die Spinne und der Skorpion, Besser denken	rauchfrei
+6652	01.11.2025	Gebet, Fasten, Heimstetterner See, Bibel Group	Bank, Nacken	Unter Beschuss, Besser denken	rauchfrei
+6653	02.11.2025	Gebet, Fasten, Phaneroo, Hope Church & Fellowship 	Bank, Nacken	Unter Beschuss, Besser denken, Bergpredigt	rauchfrei
+6654	03.11.2025	Gebet, Fasten, MB Pötzinger WI-Reifen, Bibel Group 	Bank, Nacken	Unter Beschuss	rauchfrei
+6655	04.11.2025	Gebet, Fasten	Bank, Nacken	Unter Beschuss	rauchfrei
+6656	05.11.2025	Gebet, Fasten	Bank, Nacken	Unter Beschuss, Mord in der Schwarzen Meile	rauchfrei
+6657	06.11.2025	Gebet, Fasten, Phaneroo	Bank, Nacken	Mord in der Schwarzen Meile	rauchfrei
+6658	07.11.2025	Gebet, Fasten,Bibel Group		Mord in der Schwarzen Meile	rauchfrei
+6662	11.11.2025	Gebet, Bibel Group	Bank, Nacken	Monster	rauchfrei
+6663	12.11.2025	Gebet, Bibel Group	Bank, Nacken	Monster	
+6664	13.11.2025	Gebet, Phaneroo	Bank, Nacken	Monster, Badlands	
+6665	14.11.2025	Gebet, Bibel group	Bank, Nacken	Badlands, Besser denken	
+6666	15.11.2025	Gebet, Hope Church-sduel	 	Badlands, Besser denken	
+6667	16.11.2025	Phaneroo, Hope Church & Ital. essen	Bank, Nacken	Polarstern, Bergpredigt	Start in den Tag nicht sehr gut, Gottesdienst hat das aber wieder ausgeglichen.
+6668	17.11.2025	Gebet, Bible Group	Bank, Nacken	Bergpredigt, Tod in der Provence, Besser denken	Wahre Liebe ist bedingungslos. Alles Leben kommt von Gott
+6669	18.11.2025	Gebet, Bible Group	Bank, Nacken	Tod in der Provence	 
+6670	19.11.2025	Gebet, Bible Group	Bank, Nacken	Tod in der Provence, Besser denken, Bergpredigt	 
+6671	20.11.2025	Gebet, Phaneroo	 	Bergpredigt	 
+6672	21.11.2025	Gebet	 	Tod in der Provence	 
+6673	22.11.2025	Krank	 	Tod in der Provence, Der Strippenzieher	 
+6674	23.11.2025	Phaneroo, Hope Church	 	Der Strippenzieher, Bergpredigt	 
+6675	24.11.2025	 	 	Der Strippenzieher, Monsieur le Comte und die Kunst des Tötens	 
+6676	25.11.2025	Gebet, Bibel Group 	 	Monsieur le Comte und die Kunst des Tötens	 
+6677	26.11.2025	Gebet, Bibel Group, Schwitzbad	 	Monsieur le Comte und die Kunst des Tötens	 
+6678	27.11.2025	Schwitzbad, Huber Zahnreinigung, Phaneroo	 	Monsieur le Comte und die Kunst des Tötens	 
+6679	28.11.2025	Schwitzbad, Bibel Group 	Bank, Nacken	Monsieur le Comte und die Kunst des Tötens	 
+6680	29.11.2025	Schwitzbad, Bibel Group 	Bank, Nacken	Kripo Nord Hassinsel, Werte	 
+6681	30.11.2025	Schwitzbad, Phaneroo, Hope Church online	Bank, Nacken	Kripo Nord Hassinsel, Werte	 
+6683	02.12.2025	FFM nach Nairobi	 	Signoria Commissaria und die dunklen Geister	 
+6687	06.12.2025	Bibel Group, Giraffen Garden	Bank, Nacken	Blutrote Provence 	 
+6688	07.12.2025	Phaneroo	 	Blutrote Provence 	 
+6686	05.12.2025	Bibel Group	 	Schmerzensgeld , Werte , Blutrote Provence	 
+6685	04.12.2025	Phaneroo	 	Zum Limoncello eine Leiche	 
+6684	03.12.2025	Bibel Group	 	Zum Limoncello eine Leiche	 
+6682	01.12.2025	Gebet, ED nach Gambach	 	Signoria Commissaria und die dunklen Geister	 
+6689	08.12.2025	Bibel Group	Bank, Nacken	Madame le Commissaries 1 	 
+6690	09.12.2025	Bibel Group		Werte, Madame le Commissaries 1 & 2	 
+6691	10.12.2025	Bibel Group, essen	Bank, Nacken	Werte Madame le Commissaries 2 & 3	 
+6692	11.12.2025	Phaneroo	Bank, Nacken	Werte, Madame le Commissaries 3 	 
+6693	12.12.2025	Gebet, Bibel Group	Bank, Nacken	Madame le Commissaries 4 	 
+6694	13.12.2025	Bibel Group		Madame le Commissaries 5 	 
+6695	14.12.2025			Elf Zahlen, Madame le Commissaries 5 & 6	 
+6696	15.12.2025	Bibel Group	Bank, Nacken	Der Sündenfänger, Die Mallorca-Kommissarin tödliche Siesta	 
+6697	16.12.2025	Nairobi nach FFM	 	Die Mallorca-Kommissarin tödliche Siesta	 
+6698	17.12.2025	FRA nach Gambach	 	 	 
+6699	18.12.2025	Gambach nach ED	 	 	 
+6700	19.12.2025	 	Bank, Nacken	 	 
+6701	20.12.2025	Erding Weihnachtsmarkt	 	 	 
+6702	21.12.2025	Phaneroo, 	Bank, Nacken	Die Mallorca-Kommissarin tödliche Siesta	 
+6703	22.12.2025	Bibel Group 	Bank, Nacken	Die Mallorca-Kommissarin tödliche Siesta	 
+6704	23.12.2025	Bibel Group 	 	Espresso mit Schuß	 
+6705	24.12.2025	 	 	Espresso mit Schuß, Mord an der Loire	 
+6706	25.12.2025	 	Bank, Nacken	Treibsand	 
+6707	26.12.2025	Feringasee	Bank, Nacken	Treibsand	 
+6708	27.12.2025	Gebet	Bank, Nacken	Auf (ein) Wiedersehen	 
+6709	28.12.2025	Gebet, Aquapark, Moosburg Speichersee, Tulsa King	Bank, Nacken	Auf (ein) Wiedersehen, Der Bibliothekar von Saint-Malo	 
+6710	29.12.2025	Gebet, Tulsa King, Bible Group	 	Der Bibliothekar von Saint-Malo	 
+6711	30.12.2025	Gebet, Bibel Group,  Tulsa King	Bank, Nacken	Verloren in Australien	 
+6712	31.12.2025	Gebet, Tulsa King	Bank, Nacken	Verloren in Australien, Die Flucht	 
+6713	01.01.2026	Gebet, Bibel Group, Tulsa King	Bank, Nacken	Als der Zug dich mitnahm	 
+6714	02.01.2026	Gebet, Bibel Group, Tulsa King, Eishockey ED vs Höchstadt	Bank, Nacken	Als der Zug dich mitnahm	 
+6715	03.01.2026	Gebet, Bibel Group, Tulsa King	 	Bis wir unsere Stimme finden, Everest-126	 
+6716	04.01.2026	Gebet, Hope Church	Bank, Nacken	Everest-126	 
+6717	05.01.2026	Gebet, Bibel Group	Bank, Nacken	Everest-126, Zeit der weißen Lilien	 
+6718	06.01.2026	Gebet, Bibel Group	Bank, Nacken	Zeit der weißen Lilien	 
+6722	10.01.2026	Gebet, Bibel Group	Bank, Nacken	Zwei Wahrheiten	Mutiger Beten, Truth for Live, Jesus calling
+6721	09.01.2026	Gebet, Bibel Group	Bank, Nacken	Zwei Wahrheiten	Mutiger Beten, Truth for Live, Jesus calling
+6720	08.01.2026	Gebet, Bibel Group	Bank, Nacken	Zeit der weißen Lilien, Zwei Wahrheiten	Mutiger Beten, Truth for Live, Jesus calling
+6719	07.01.2026	Gebet, Bibel Group	Bank, Nacken	Zeit der weißen Lilien	Mutiger Beten, Jesus calling
+6723	11.01.2026	Hope Church 		Zwei Wahrheiten, Am Ende dieses Jahres	Mutiger Beten, Truth for Live, Jesus calling. beim Beten die Endsituation sehen
+6724	12.01.2026	Bibel Group 	Bank, Nacken	Am Ende dieses Jahres	Mutiger Beten, Truth for Live, Jesus calling. beim Beten die Endsituation sehen
+6725	13.01.2026	OKR Frankfurt	 	Am Ende dieses Jahres, Dunkle Stunden	Truth for Live, Jesus calling. beim Beten die Endsituation sehen
+6726	14.01.2026	Bible Group	Bank, Nacken	Dunkle Stunden	Die Augen des Herzen öffnen, weg vom begrenzten Horizont des hier und jetzt
+6727	15.01.2026	Bible Group	Bank, Nacken	Dunkle Stunden	Die Augen des Herzen öffnen, weg vom begrenzten Horizont des hier und jetzt
+6728	16.01.2026	Bible Group	Bank, Nacken	Die Sünden der anderen	Mutiger Beten, Truth for Live, Jesus calling. Herzen öffnen
+6729	17.01.2026	Hope Church-sduel, Bibel Group	 	Die Sünden der anderen	 
+6730	18.01.2026	Gebet, Hope Church	Bank, Nacken	Bergpredigt	 
+6731	19.01.2026	Bibel Group	Bank, Nacken	Die Sünden der anderen	 
+6732	20.01.2026	 	 	Die Sünden der anderen	Lief nicht alles wie es soll. Alte Muster, aufregen, nicht gelassen, nicht so wie ich es will
+6733	21.01.2026	Gebet, Bible Group	Bank, Nacken	Die Sünden der anderen	 
+6734	22.01.2026	Phaneroo 	 	The Midnight Caller	 
+6735	23.01.2026	Gebet, Bible Group 	Bank, Nacken	The Midnight Caller	 
+6736	24.01.2026	 	Bank, Nacken	The Midnight Caller, Kind Nr. 9513	 
+6738	26.01.2026	Gebet, Hope Church – Speaking in tongues	Bank, Nacken	Kind Nr. 9513	 
+6737	25.01.2026	Gebet, Phaneroo, Hope Church	Bank, Nacken	Kind Nr. 9513, Berpredigt	Was hast du denn irgendeinem anderen voraus? Was hast du vorzuweisen, \ndas du nicht von Gott bekommen hast? Und wenn alles von Gott kommt, \nwas du vorzuweisen hast, warum gibst du dann damit an, so, als ob es kein Geschenk wäre?
+6744	31.01.2026	Bible Group	 	Alles, was wir uns versprochen haben, Geier	 
+6740	28.01.2026	Gebet, Bible Group	Bank, Nacken	Alles was wir versprochen haben	 
+6741	29.01.2026	Gebet, Phaneroo	Bank, Nacken	Alles was wir versprochen haben	 
+6742	29.01.2026	Gebet, Bible Group	Bank, Nacken	Alles was wir versprochen haben	 
+6743	30.01.2026	Gebet, Bible Group	Bank, Nacken	Alles was wir versprochen haben	 
+6739	27.01.2026	\\nGebet, Hope Church	 	\\nAlles was wir versprochen haben 	 
+6745	01.02.2026	Gebet, Phaneroo, Hope Church	Bank, Nacken	Geier, Bergpredigt	 
+6746	02.02.2026	Bible Group 	Bank, Nacken	Unterm Gewitter	 
+6747	03.02.2026	Gebet, Hope Church	 	Unterm Gewitter	 
+6748	04.02.2026	Bible Group	Bank, Nacken	Das Erbe	 
+6749	05.02.2026	Phaneroo		Das Erbe	 
+6750	06.02.2026	 	Bank, Nacken	Das Erbe	 
+6751	07.02.2026	Bible Group	 	 	 
+6752	08.02.2026	Phaneroo, Hope Church	Bank, Nacken	Das Erbe	 
+6753	09.02.2026	Bible Group	Bank, Nacken	Das Erbe, Mörderische Provence	 
+6754	10.02.2026	Bürostuhl, Hope Church	 	 	 
+6755	11.02.2026	 	Bank, Nacken	 	 
+6756	12.02.2026	Had-Eck		Mörderische Provence	 
+6757	13.02.2026	Hope Church	Bank, Nacken	Mörderische Provence, Fire Watch	 
+6758	14.02.2026	Mühldorf	Bank, Nacken	Fire Watch	 
+6759	15.02.2026	Hope Church	Bank, Nacken	Fire Watch	 
+6760	16.02.2026	Bibel Group	Bank, Nacken	Fire Watch, Der Drache	 
+6761	17.02.2026	Hope Church	 	Der Drache	 
+6762	18.02.2026	Bible Group	Bank, Nacken	Der Drache, Brynne	 
+6763	19.02.2026	Phaneroo	 	Brynne	 
+6764	20.02.2026	Forstners Wartenberg essen	Bank, Nacken	 	 
+6765	21.02.2026	Hope Church-sduel. Bible Group	Bank, Nacken	Brynne	 
+6766	22.02.2026	Phaneroo	Bank, Nacken	Brynne	 
+6767	23.02.2026	K8s Schulung	 	 	 
 \.
 
 
@@ -6784,14 +8213,6 @@ COPY public.journalnew (key, datum, erfolg, sport, buch, erkenntnis) FROM stdin;
 
 
 --
--- Data for Name: km; Type: TABLE DATA; Schema: public; Owner: mspruck
---
-
-COPY public.km (datum, typ, kennzeichen, km, bemerkung, von, bis, km_monat, km_saison, id) FROM stdin;
-\.
-
-
---
 -- Data for Name: reisekosten; Type: TABLE DATA; Schema: public; Owner: mspruck
 --
 
@@ -6817,6 +8238,76 @@ COPY public.reisekosten (datum, hotel, strecke, km, kosten, key) FROM stdin;
 10. April 2024 	 	Gambach – FFM	38	 	19
 11. April 2024 	 	Gambach – FFM	38	 	20
 12. April 2024 	 	Gambach – ED	444	 	21
+23. Juni 2024	 	Erding - Köln	609	 	26
+01. Juli 2024	 	Köln - FFM - Köln	410	 	27
+06. Juli 2024	 	Köln - Erding	609	 	28
+02. Sept. 2024	 	Erding - FFM - Erding	828	 	29
+\.
+
+
+--
+-- Data for Name: toyota; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.toyota (km_id, datum, kfz, kz, km_stand, kommentar, anfang_datum, end_datum, monat_km, saison_km) FROM stdin;
+1	31. Dez 21				KM Stand				3350
+2	01. Jan 22				KM Stand	01. Jan 22	31. Jan 22		
+3	31. Mai 22			11750	KM Stand	01. Jan 22	31. Mai 22		8400
+4	30. Jun 22			11970	KM Stand	01. Jun 22	30. Jun 22	220	8620
+5	31. Jul 22			12140	KM Stand	01. Jul 22	31. Jul 22	170	8790
+6	31. Okt 22			15980	KM Stand	01. Sep 22	31. Okt 22	3840	12630
+7	12. Apr 23			25720	Inspektion, Sommerreifen				
+8	31. Jul 23			31000	KM Stand		31. Jul 23	5280	
+9	31. Mär 24			45915	KM Stand		31. Mär 24		14915
+\.
+
+
+--
+-- Data for Name: vrscdx; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.vrscdx (km_id, datum, kfz, kz, km_stand, kommentar, anfang_datum, end_datum, monat_km, saison_km) FROM stdin;
+1	6. Mär 20			8821	Übergabe Würzburg				
+2	31. Mär 20			9138	KM Stand	1. Mär 20	31. Mär 20	317	
+3	30. Apr 20			9283	KM Stand	01. Apr 20	30. Apr 20	145	462
+4	31. Mai 20			9528	KM Stand	01. Mai 20	31. Mai 20	245	710
+5	30. Jun 20			10078	KM Stand	01. Jun 20	30. Jun 20	550	1260
+6	31. Jul 20			10769	KM Stand	01. Jul 20	31. Jul 20	691	1951
+7	31. Aug 20			11005	KM Stand	01. Aug 20	31. Aug 20	236	2187
+8	30. Sep 20			11388	KM Stand	01. Sep 20	30. Sep 20	383	2570
+9	31. Okt 20			11462	KM Stand	01. Okt 20	31. Okt 20	74	2644
+10	30. Nov 20			11630	KM Stand - Motorrad Saison Ende	01. Nov 20	30. Nov 20	168	2814
+11	1. Mär 21				KM Stand - Motorrad Saison Anfang				
+12	31. Mär 21				KM Stand	1. Mär 21	31. Mär 21	0	
+13	30. Apr 21				KM Stand	01. Apr 21	30. Apr 21	0	
+14	31. Mai 21				KM Stand	01. Mai 21	31. Mai 21	0	
+15	30. Jun 21				KM Stand	01. Jun 21	30. Jun 21	0	
+16	31. Jul 21				KM Stand	01. Jul 21	31. Jul 21	0	
+17	31. Aug 21			11909	KM Stand	01. Aug 21	31. Aug 21		279
+18	30. Sep 21			12613	KM Stand	01. Sep 21	30. Sep 21	704	983
+19	31. Okt 21			12776	KM Stand	01. Okt 21	31. Okt 21	163	1146
+20	1. Mär 22								
+21	31. Mai 22			13183	KM Stand	1. Mär 22	31. Mai 22		407
+22	30. Jun 22			13427	KM Stand	01. Jun 22	30. Jun 22	244	651
+23	31. Jul 22			14013	KM Stand	01. Jul 22	31. Jul 22	586	1237
+24	31. Aug 22			14165	KM Stand	01. Aug 22	31. Aug 22	152	1389
+25	30. Sep 22			14302	KM Stand	01. Sep 22	30. Sep 22	137	1526
+26	31. Okt 22			14477	KM Stand	01. Okt 22	31. Okt 22	175	1701
+27	1. Mär 23								
+28	31. Mär 23			14503	KM Stand	1. Mär 23	31. Mär 23		26
+29	30. Apr 23			14629	KM Stand	01. Apr 23	30. Apr 23	126	152
+30	31. Mai 23			15038	KM Stand	01. Mai 23	31. Mai 23	409	561
+31	30. Jun 23			15117	KM Stand	01. Jun 23	30. Jun 23	139	700
+32	31. Jul 23			15255	KM Stand	01. Jul 23	31. Jul 23	138	838
+33	31. Aug 23			15413	KM Stand	01. Aug 23	31. Aug 23	158	996
+34	30. Sep 23			15768	KM Stand	01. Sep 23	30. Sep 23	355	1351
+35	31. Okt 23			15835	KM Stand	01. Okt 23	31. Okt 23	67	1418
+36	1. Mär 24								
+37	31. Mär 24			15975	KM Stand	1. Mär 24	31. Mär 24		140
+38	30. Apr 24			16240	KM Stand	01. Apr 24	30. Apr 24	265	405
+39	31. Mai 24			16459	KM Stand	01. Mai 24	31. Mai 24	219	624
+40	31. Aug 24			16652	KM Stand	01. Jun 24	31. Aug 24	193	817
+41	30. Nov 24			 	KM Stand	01. Sep 24	30.Nov 24	0	0
 \.
 
 
@@ -6824,7 +8315,7 @@ COPY public.reisekosten (datum, hotel, strecke, km, kosten, key) FROM stdin;
 -- Name: blutdruck_key_column_seq; Type: SEQUENCE SET; Schema: public; Owner: mspruck
 --
 
-SELECT pg_catalog.setval('public.blutdruck_key_column_seq', 149, true);
+SELECT pg_catalog.setval('public.blutdruck_key_column_seq', 177, true);
 
 
 --
@@ -6838,28 +8329,56 @@ SELECT pg_catalog.setval('public.depot_key_seq', 67, true);
 -- Name: dkv_id_seq; Type: SEQUENCE SET; Schema: public; Owner: mspruck
 --
 
-SELECT pg_catalog.setval('public.dkv_id_seq', 189, true);
+SELECT pg_catalog.setval('public.dkv_id_seq', 211, true);
+
+
+--
+-- Name: flfbs_km_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.flfbs_km_id_seq', 6, true);
+
+
+--
+-- Name: flhtkl_km_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.flhtkl_km_id_seq', 66, true);
+
+
+--
+-- Name: flstfi_km_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.flstfi_km_id_seq', 33, true);
 
 
 --
 -- Name: journalnew_key_seq; Type: SEQUENCE SET; Schema: public; Owner: mspruck
 --
 
-SELECT pg_catalog.setval('public.journalnew_key_seq', 6112, true);
-
-
---
--- Name: km_id_seq; Type: SEQUENCE SET; Schema: public; Owner: mspruck
---
-
-SELECT pg_catalog.setval('public.km_id_seq', 1, false);
+SELECT pg_catalog.setval('public.journalnew_key_seq', 6767, true);
 
 
 --
 -- Name: reisekosten_key_seq; Type: SEQUENCE SET; Schema: public; Owner: mspruck
 --
 
-SELECT pg_catalog.setval('public.reisekosten_key_seq', 25, true);
+SELECT pg_catalog.setval('public.reisekosten_key_seq', 29, true);
+
+
+--
+-- Name: toyota_km_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.toyota_km_id_seq', 9, true);
+
+
+--
+-- Name: vrscdx_km_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.vrscdx_km_id_seq', 42, true);
 
 
 --
@@ -6887,6 +8406,30 @@ ALTER TABLE ONLY public.dkv
 
 
 --
+-- Name: flfbs flfbs_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.flfbs
+    ADD CONSTRAINT flfbs_pkey PRIMARY KEY (km_id);
+
+
+--
+-- Name: flhtkl flhtkl_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.flhtkl
+    ADD CONSTRAINT flhtkl_pkey PRIMARY KEY (km_id);
+
+
+--
+-- Name: flstfi flstfi_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.flstfi
+    ADD CONSTRAINT flstfi_pkey PRIMARY KEY (km_id);
+
+
+--
 -- Name: journal_klon journal_klon_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -6911,19 +8454,27 @@ ALTER TABLE ONLY public.journalnew
 
 
 --
--- Name: km km_pkey; Type: CONSTRAINT; Schema: public; Owner: mspruck
---
-
-ALTER TABLE ONLY public.km
-    ADD CONSTRAINT km_pkey PRIMARY KEY (id);
-
-
---
 -- Name: reisekosten reisekosten_pkey; Type: CONSTRAINT; Schema: public; Owner: mspruck
 --
 
 ALTER TABLE ONLY public.reisekosten
     ADD CONSTRAINT reisekosten_pkey PRIMARY KEY (key);
+
+
+--
+-- Name: toyota toyota_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.toyota
+    ADD CONSTRAINT toyota_pkey PRIMARY KEY (km_id);
+
+
+--
+-- Name: vrscdx vrscdx_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.vrscdx
+    ADD CONSTRAINT vrscdx_pkey PRIMARY KEY (km_id);
 
 
 --
@@ -6953,13 +8504,6 @@ GRANT ALL ON TABLE public.dkv TO postgres;
 --
 
 GRANT ALL ON TABLE public.journalnew TO journal;
-
-
---
--- Name: TABLE km; Type: ACL; Schema: public; Owner: mspruck
---
-
-GRANT ALL ON TABLE public.km TO km;
 
 
 --
